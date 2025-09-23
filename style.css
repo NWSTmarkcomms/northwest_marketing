@@ -45,17 +45,17 @@ body {
   margin: 0;
 }
 
+
 .product-grid {
   display: grid;
-grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(3, 1fr); /* always 3 columns */
+  gap: 1rem;
   padding: 1rem;
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
   max-width: 1200px;
   box-sizing: border-box;
 }
-
 
 .product-card:hover {
   transform: translateY(-4px);
@@ -216,14 +216,20 @@ body.modal-open {
 }
 
 .product-card {
-  background: #ffffff; /* ✅ soft cream color */
-  border: 1px solid #e8e6dd; /* optional subtle border */
+  background: #ffffff; 
+  border: 1px solid #e8e6dd;
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); /* gentle lift */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
-  transform-origin: top left; /* Keeps alignment natural */
+  transform-origin: top left;
+
+  max-width: 320px;   /* ✅ keep cards from being oversized */
+  width: 100%;        /* ✅ let them shrink as needed */
+  margin: 0 auto;     /* ✅ center inside each grid cell */
 }
+
+
 
 .nav-search-wrapper {
   display: flex;
@@ -342,7 +348,7 @@ body.modal-open {
 
 .feature-btn {
   padding: 0.75rem 1.5rem;
-  border: 2px solid black;
+  border: 2px solid rgb(52, 37, 37);
   background: transparent;
   font-weight: bold;
   font-size: 1rem;
