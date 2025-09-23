@@ -1,4 +1,3 @@
-/* Northwest Brand-Inspired Full CSS with #85C446 */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -7,7 +6,7 @@ body {
 }
 
 .header {
-  background-color: #85C446; /* Northwest Green */
+  background-color: #85C446;
   padding: 1rem 2rem;
   text-align: center;
 }
@@ -48,7 +47,7 @@ body {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   padding: 1rem;
   margin: 0;
@@ -56,6 +55,7 @@ body {
   max-width: 1200px;
   box-sizing: border-box;
 }
+
 
 .product-card:hover {
   transform: translateY(-4px);
@@ -125,6 +125,7 @@ body.modal-open .product-card:hover {
   background-color: #6ba136;
 }
 
+
 .row-layout {
   display: flex;
   flex-direction: row;
@@ -162,6 +163,7 @@ body.modal-open .product-card:hover {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 
 .flyer-close-button {
   position: absolute;
@@ -205,6 +207,7 @@ body.modal-open {
   margin: auto;
 }
 
+
 .product-card .product-title {
   font-size: 1.5rem;
   color: #85C446;
@@ -213,13 +216,13 @@ body.modal-open {
 }
 
 .product-card {
-  background: #ffffff;
-  border: 1px solid #e8e6dd;
+  background: #ffffff; /* ✅ soft cream color */
+  border: 1px solid #e8e6dd; /* optional subtle border */
   border-radius: 12px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); /* gentle lift */
   transition: transform 0.3s ease;
-  transform-origin: top left;
+  transform-origin: top left; /* Keeps alignment natural */
 }
 
 .nav-search-wrapper {
@@ -254,6 +257,7 @@ body.modal-open {
   box-sizing: border-box;
   margin-top: 0;
 }
+
 
 .product-details textarea {
   padding: 0.75rem;
@@ -328,7 +332,6 @@ body.modal-open {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #85C446;
 }
 
 .feature-text-card p {
@@ -339,7 +342,7 @@ body.modal-open {
 
 .feature-btn {
   padding: 0.75rem 1.5rem;
-  border: 2px solid #2E2E2E;
+  border: 2px solid black;
   background: transparent;
   font-weight: bold;
   font-size: 1rem;
@@ -348,7 +351,7 @@ body.modal-open {
 }
 
 .feature-btn:hover {
-  background: #2E2E2E;
+  background: black;
   color: white;
 }
 
@@ -456,18 +459,18 @@ a:visited {
 
 .feature-title-link:hover {
   text-decoration: underline;
-  color: #85C446;
+  color: #85C446; /* or your brand color */
 }
 
 .feature-details {
-  display: none;
+  display: none; /* hide initially */
 }
 
 .feature-details.show {
-  display: block;
+  display: block; /* show when toggled */
 }
 
-/* Closed state */
+/* Closed state: keep it minimal */
 .feature-section:not(.open) .feature-content {
   border: none;
   box-shadow: none;
@@ -475,12 +478,19 @@ a:visited {
   padding: 0;
 }
 
-/* Accordion states */
+/* Add the .open class when revealing */
+/* in style.css */
+.feature-details { display: none; }
+.feature-details.show { display: block; }
+
+/* tighten hero + feature spacing */
+.hero-banner { padding: 1.25rem 2rem; }          /* was 2rem */
+.feature-section { padding: 1rem 0; margin: 0; }  /* was 4rem 2rem */
+.feature-content { cursor: pointer; }
+
+/* accordion states */
 .feature-details { display: none; }
 .feature-section.open .feature-details { display: block; }
 
-/* Spacing adjustments */
-.hero-banner { padding: 1.25rem 2rem; }
-.feature-section { padding: 1rem 0; margin: 0; }
-.feature-content { cursor: pointer; }
-.product-grid { padding-top: 0.75rem; }
+/* optional: reduce gap above the grid a touch */
+.product-grid { padding-top: 0.75rem; }           /* was 1rem */
