@@ -74,7 +74,7 @@
 
   <main class="product-grid">
 
-    <div class="product-card">
+   <div class="product-card">
       <h2 class="product-title">All Services Leave Behind (4x9")</h2>
 
         <div class="row-layout">
@@ -97,11 +97,13 @@
 
    <div class="product-details">
       <form 
-        action="https://hooks.zapier.com/hooks/catch/12716030/um5yedq/" 
-        method="POST" 
-        target="hiddenFrame"
-        onsubmit="setTimeout(() => { window.location.href = 'https://mccall-marketing.netlify.app/catalog'; }, 1000);"
-      >
+  action="https://hooks.zapier.com/hooks/catch/12716030/um5yqfo/" 
+  method="POST" 
+  target="hiddenFrame" 
+  onsubmit="handleFormSubmit(event)" 
+>
+
+
             <input type="text" name="fullName" placeholder="Manager Name" required />
             <input type="email" name="email" placeholder="Manager Email" required />
             <select name="Quantity" required>
@@ -154,6 +156,11 @@
             <input type="hidden" name="product" value="All Services Leave Behind" />
             <button type="submit" class="button">Request</button>
           </form>
+        </div>
+
+          <p id="successMessage" style="display:none; color:green; margin-top:10px;">
+  🥳 Stay tuned for an email confirmation!
+</p>
         </div>
 
   <!-- This section shows the expanded view -->
@@ -1534,6 +1541,25 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleFeature(e);
     });
   }
+
+    // ✅ Form handler for Zapier + success message + redirect
+  window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    // Submit to Zapier webhook
+    form.submit();
+
+    // Show success message (scoped to this product card)
+    const msg = form.parentElement.querySelector('#successMessage');
+    if (msg) {
+      msg.style.display = 'block';
+    }
+
+    // Auto-redirect after short delay
+    setTimeout(() => {
+      window.location.href = 'success.html';
+    }, 2500);
 });
 </script>
 
