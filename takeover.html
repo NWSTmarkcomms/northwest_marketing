@@ -12,7 +12,7 @@
     
   <header class="header">
     <div class="logo-nav-container">
-      <img src="images/logo-placeholder.png" alt="Company Logo" class="logo" />
+      <img src="images/northwest.png" alt="Northwest Logo" class="logo" />
     
 
 
@@ -29,7 +29,6 @@
   <a href="flyers.html">Flyers</a>
   <a href="takeover.html">Takeover Cards</a>
   <a href="thank-you-cards.html">Thank You Cards</a>
-  <a href="new-construction.html">New Construction</a>
   <a href="faq.html">FAQ</a>
   <a href="contact.html">Contact Us</a>
 </nav>
@@ -53,37 +52,42 @@
           Which Marketing Material Fits Your Moment?
         </a>
       </h2>
-      <div class="feature-details" id="featureDetails">
-      <p><strong>Door Hangers (3.5x8.5")</strong><br>
-      Designed with your clover leafing strategy in mind.</p>
-      <p><strong>Flyers (8.5x11")</strong><br>
-      The largest way to share your services. Perfect for community boards, commercial leave-behinds, and high-impact messaging.</p>
-      <p><strong>Leave Behinds (4x9")</strong><br>
-      Designed for in-person connection and extraordinary events. A friendly, sleek way to continue the conversation.</p>
-      <p><strong>Takeover Cards (3x5")</strong><br>
-      Share $25 discounts to new customers at events.</p>
-      <p><strong>Thank You Cards (3x5")</strong><br>
-      A kind word goes a long way. Use these to show appreciation for your community or teammates.</p>
+      <div class="feature-details">
+        <p><strong>Door Hangers (3.5x8.5")</strong><br>
+        Designed with your clover leafing strategy in mind.</p>
+        <p><strong>Flyers (8.5x11")</strong><br>
+        The largest way to share your services. Perfect for community boards, commercial leave-behinds, and high-impact messaging.</p>
+        <p><strong>Leave Behinds (4x9")</strong><br>
+        Designed for in-person connection and extraordinary events. A friendly, sleek way to continue the conversation.</p>
+        <p><strong>Takeover Cards (3x5")</strong><br>
+        Share $25 discounts to new customers at events.</p>
+        <p><strong>Thank You Cards (3x5")</strong><br>
+        A kind word goes a long way. Use these to show appreciation for your community or teammates.</p>
+      </div>
     </div>
   </div>
 </section>
 
 
+
+
+
   <main class="product-grid">
-    
- 
+
+
     <div class="product-card">
-      <h2 class="product-title">Takeover Card (3x5")</h2>
+      <h2 class="product-title">Takeover Postcard (4x6")</h2>
 
         <div class="row-layout">
-        <div class="flyer-expand-toggle">
-          <input type="checkbox" id="expand-takeover-card" class="expand-checkbox" hidden>
+<div class="flyer-expand-toggle">
+  <input class="expand-checkbox" hidden id="expand-Takeover Postcard" type="checkbox" />
+
   <!-- 👇 This label controls the expand toggle -->
-  <label class="flyer-thumb-container" for="expand-takeover-card">
+  <label class="flyer-thumb-container" for="expand-Takeover Postcard">
     <img
-      alt="Takeover Card"
+      alt="All Services Leave Behind"
       class="flyer-thumb top-left"
-      src="images/BHPC-coffee-shop-card-120.png"
+      src="images/nwst-takeover-postcard-120.png"
     />
 
     <!-- 👇 This text is part of the same label, so it's clickable too -->
@@ -92,24 +96,15 @@
     </p>
   </label>
 
-  <!-- This section shows the expanded view -->
-  <label class="flyer-expanded-view" for="takeover-card">
-    <button aria-label="Close" class="flyer-close-button">×</button>
-    <img
-      alt="Takeover Card"
-      class="flyer-expanded-img"
-      src="images/BHPC-coffee-shop-card-720.png"
-    />
-  </label>
-</div>
-
-        <div class="product-details">
+   <div class="product-details">
       <form 
-        action="https://hooks.zapier.com/hooks/catch/12716030/uodfhsh/" 
-        method="POST" 
-        target="hiddenFrame"
-        onsubmit="setTimeout(() => { window.location.href = 'https://bughousesuccess.netlify.app/'; }, 1000);"
-      >
+  action="https://hooks.zapier.com/hooks/catch/12716030/um5yedq/" 
+  method="POST" 
+  target="hiddenFrame" 
+  onsubmit="handleFormSubmit(event)" 
+>
+
+
             <input type="text" name="fullName" placeholder="Manager Name" required />
             <input type="email" name="email" placeholder="Manager Email" required />
             <select name="Quantity" required>
@@ -121,25 +116,67 @@
             </select>
             <select name="office" required>
               <option value="" disabled selected>Select Office</option>
-        <option value="Augusta - BHPC">Augusta - BHPC</option>
-        <option value="Carrollton - BHPC">Carrollton - BHPC</option>
-        <option value="Dublin - BHPC">Dublin - BHPC</option>
-        <option value="Eastman - BHPC">Eastman - BHPC</option>
-        <option value="Greensboro - BHPC">Greensboro - BHPC</option>
-        <option value="Macon - BHPC">Macon - BHPC</option>
-        <option value="Madison - BHPC">Madison - BHPC</option>
-        <option value="Milledgeville - BHPC">Milledgeville - BHPC</option>
-        <option value="St. Simons - BHPC">St. Simons - BHPC</option>
-        <option value="Warner Robins - BHPC">Warner Robins - BHPC</option>
-        <option value="Watkinsville - BHPC">Watkinsville - BHPC</option>
+        <option value="Acworth - NWST">Acworth - NWST</option> 
+        <option value="Alpharetta - NWST">Alpharetta - NWST</option> 
+        <option value="Anniston - NWST">Anniston - NWST</option> 
+        <option value="Augusta - NWST">Augusta - NWST</option> 
+        <option value="Buford - NWST">Buford - NWST</option> 
+        <option value="Canton - NWST">Canton - NWST</option> 
+        <option value="Carrollton - NWST">Carrollton - NWST</option> 
+        <option value="Columbus - NWST">Columbus - NWST</option> 
+        <option value="Commercial Pest East Cobb - NWST">Commercial Pest East Cobb - NWST</option> 
+        <option value="Commercial Pest Tucker - NWST">Commercial Pest Tucker - NWST</option> 
+        <option value="Cullman - NWST">Cullman - NWST</option> 
+        <option value="Dallas - NWST">Dallas - NWST</option> 
+        <option value="Dawsonville - NWST">Dawsonville - NWST</option> 
+        <option value="East Cobb - NWST">East Cobb - NWST</option> 
+        <option value="Hermitage - NWST">Hermitage - NWST</option> 
+        <option value="Hixson - NWST">Hixson - NWST</option> 
+        <option value="Homewood - NWST">Homewood - NWST</option> 
+        <option value="Innovation Center - NWST">Innovation Center - NWST</option> 
+        <option value="Jasper - NWST">Jasper - NWST</option> 
+        <option value="LaGrange - NWST">LaGrange - NWST</option> 
+        <option value="Lanier - NWST">Lanier - NWST</option> 
+        <option value="Laurens - NWST">Laurens - NWST</option> 
+        <option value="Lawrenceville - NWST">Lawrenceville - NWST</option> 
+        <option value="Macon - NWST">Macon - NWST</option> 
+        <option value="Marietta - NWST">Marietta - NWST</option> 
+        <option value="Monroe - NWST">Monroe - NWST</option> 
+        <option value="Murfreesboro - NWST">Murfreesboro - NWST</option> 
+        <option value="Newnan - NWST">Newnan - NWST</option> 
+        <option value="Ooltewah - NWST">Ooltewah - NWST</option> 
+        <option value="Opelika - NWST">Opelika - NWST</option> 
+        <option value="Peachtree Corners - NWST">Peachtree Corners - NWST</option> 
+        <option value="Ringgold - NWST">Ringgold - NWST</option> 
+        <option value="Savannah - NWST">Savannah - NWST</option> 
+        <option value="Smyrna - NWST">Smyrna - NWST</option> 
+        <option value="Stockbridge - NWST">Stockbridge - NWST</option> 
+        <option value="Team Support Center - NWST">Team Support Center - NWST</option> 
+        <option value="Tucker - NWST">Tucker - NWST</option>
             </select>
-            <input type="hidden" name="product" value="Takeover Card" />
+            <input type="hidden" name="product" value="Takeover Postcard" />
             <button type="submit" class="button">Request</button>
           </form>
+
+          <p id="successMessage" style="display:none; color:green; margin-top:10px;">
+  🥳 Stay tuned for an email confirmation!
+</p>
         </div>
+
+  <!-- This section shows the expanded view -->
+  <label class="flyer-expanded-view" for="expand-Takeover Postcard">
+    <button aria-label="Close" class="flyer-close-button">×</button>
+    <img
+      alt="All Services Leave Behind"
+      class="flyer-expanded-img"
+      src="images/nwst-takeover-postcard-720.png"
+    />
+  </label>
+</div>
       </div>
     </div>
-          
+
+  
     
   </main>
 <script>
@@ -211,8 +248,35 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleFeature(e);
     });
   }
+
+  // ✅ Form handler for Zapier + success message + redirect
+  window.handleFormSubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    // Submit to Zapier webhook
+    form.submit();
+
+    // Clear the form
+    form.reset();
+
+    // Show success message only inside this product-card
+    const msg = form.closest('.product-details').querySelector('#successMessage');
+    if (msg) {
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 2000); // fade message before redirect
+    }
+
+    // Redirect after short delay
+    setTimeout(() => {
+      window.location.href = 'success.html';
+    }, 2500);
+    };
 });
 </script>
+
 
 </body>
 </html>
