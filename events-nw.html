@@ -3,189 +3,321 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Events | Marketing Portal</title>
+  <title>Events | Northwest Marketing Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Keep this if your catalog uses hiddenFrame patterns -->
-  <iframe name="hiddenFrame" style="display:none;"></iframe>
 
-  <!-- Header matches your existing portal layout -->
+  <!-- Keep if Events should be behind your portal auth -->
+  <script type="module" src="/scripts/auth.js"></script>
+
+  <!-- HEADER -->
   <header class="header">
     <div class="logo-nav-container">
       <img src="images/northwest.png" alt="Northwest Logo" class="logo" />
 
       <div class="search-wrapper">
         <div class="search-container">
-          <input type="text" id="portalSearch" placeholder="Search events + resources..." />
+          <input type="text" id="portalSearch" placeholder="Search: mouse, request, calendar, leaderboard, materials" />
         </div>
 
-<nav class="navbar"> 
-  <a href="catalog.html">All Materials</a>
-  <a href="door-hangers.html">Door Hangers</a>
-  <a href="leave-behinds.html">Leave Behinds</a>
-  <a href="events-nw.html">Events</a>
-  <a href="flyers.html">Flyers</a>
-  <a href="takeover.html">Takeover Cards</a>
-  <a href="thank-you-cards.html">Thank You Cards</a>
-  <a href="faq.html">FAQ</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
+        <nav class="navbar">
+          <a href="catalog.html">Catalog</a>
+          <a href="event-materials.html">Event Materials</a>
+          <a href="events.html" aria-current="page" class="active">Events</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
+  <!-- HERO (Mouse-forward) -->
   <section class="hero-banner">
-    <h1 class="hero-title">Events Hub</h1>
+    <h1 class="hero-title">Bring The Mouse. Win the Community.</h1>
     <p class="hero-subtitle">
-      Plan smarter. Show up bigger. Stack wins for your office.
+      One Team. One Vision. We’re all about a winning experience—show up where local attention is and make it unforgettable.
     </p>
 
     <div class="hero-actions">
-      <a class="pill-button" href="#request">Request an Event</a>
-      <a class="pill-button ghost" href="#calendar">View the Calendar</a>
-      <a class="pill-button ghost" href="event-materials.html">Grab Event Materials</a>
+      <a class="pill-button" href="#request">Request Event + Mouse</a>
+      <a class="pill-button ghost" href="#mouse-playbook">Mouse Playbook</a>
+      <a class="pill-button ghost" href="#calendar">View Calendar</a>
     </div>
   </section>
 
   <main class="page-shell">
 
-    <!-- “Galvanize competition” section -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Office Leaderboard</h2>
-        <p class="muted">
-          Make events a game. Celebrate participation, consistency, and community impact.
-        </p>
-      </div>
+    <!-- ===================== -->
+    <!-- CONFIG (EDIT HERE)    -->
+    <!-- ===================== -->
+    <script>
+      const EVENTS_CONFIG = {
+        calendarEmbedUrl: "https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de",
+        requestFormUrl: "https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354",
 
-      <div class="leaderboard-grid" id="leaderboardGrid"></div>
+        marketingEmail: "marketingcommunications@callnorthwest.com",
 
-      <div class="mini-card tip-card">
-        <strong>How to run this:</strong>
-        <ol>
-          <li>Use “Events Hosted” as your main score.</li>
-          <li>Give bonus points for first-time events, community partners, and teammate attendance.</li>
-          <li>Spotlight the top 3 offices monthly in Teams.</li>
-        </ol>
-      </div>
-    </section>
+        // Manual friendly competition (easy update)
+        leaderboard: [
+          { office: "Columbus", events: 5, points: 52, highlight: "Biggest growth" },
+          { office: "Tucker", events: 3, points: 49, highlight: "Best follow-up" },
+          { office: "Marietta", events: 4, points: 44, highlight: "Most community stops" },
+          { office: "Alpharetta", events: 2, points: 31, highlight: "Strong momentum" },
+          { office: "Kennesaw", events: 2, points: 28, highlight: "New push" }
+        ],
 
-    <!-- Quick links to “make it easy” -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Fast Actions</h2>
-        <p class="muted">One click. No hunting.</p>
-      </div>
+        quickLinks: [
+          { title: "Request Event + Mouse", sub: "Fastest way to lock support", href: "#request" },
+          { title: "Mouse Playbook", sub: "Do’s/Don’ts + checklist", href: "#mouse-playbook" },
+          { title: "View Calendar", sub: "See upcoming events live", href: "#calendar" },
+          { title: "Event Materials", sub: "Banners, tents, tablecloths", href: "event-materials.html" }
+        ],
 
-      <div class="quick-actions">
-        <a class="action-card" href="event-materials.html">
-          <div class="action-title">Event Materials</div>
-          <div class="action-sub">Tables, banners, leave-behinds, more</div>
-        </a>
+        imageTiles: [
+          { title: "Event Materials", href: "event-materials.html", img: "images/event-materials.jpg" },
+          { title: "Marketing Catalog", href: "catalog.html", img: "images/catalog.jpg" }
+        ]
+      };
+    </script>
 
-        <a class="action-card" href="catalog.html">
-          <div class="action-title">Full Catalog</div>
-          <div class="action-sub">All materials in one place</div>
-        </a>
-
-        <a class="action-card" href="#calendar">
-          <div class="action-title">See Upcoming Events</div>
-          <div class="action-sub">Calendar view</div>
-        </a>
-
-        <a class="action-card" href="#request">
-          <div class="action-title">Submit an Event Request</div>
-          <div class="action-sub">Smartsheet form</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Calendar embed -->
-    <section class="section" id="calendar">
-      <div class="section-header">
-        <h2>Event Calendar</h2>
-        <p class="muted">
-          View-only calendar. No Smartsheet login required.
-        </p>
-      </div>
-
-      <div class="embed-card">
-        <div class="embed-topbar">
-          <div class="embed-title">Northwest Events Calendar</div>
-          <a class="mini-link" href="https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de" target="_blank" rel="noopener">
-            Open in new tab
-          </a>
-        </div>
-
-        <div class="iframe-wrap">
-          <iframe
-            title="Smartsheet Published Calendar"
-            src="https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Request form embed -->
+    <!-- ===================== -->
+    <!-- TOP: REQUEST FORM      -->
+    <!-- ===================== -->
     <section class="section" id="request">
       <div class="section-header">
-        <h2>Request an Event</h2>
+        <h2>Request Event Support + The Mouse</h2>
         <p class="muted">
-          Submit once. Marketing coordinates the rest.
+          Reserve the Mouse for upcoming events and bring the brand to life. Submit the form first—Marketing coordinates the rest.
         </p>
       </div>
 
       <div class="two-col">
+        <!-- LEFT: Mouse-forward instructions -->
+        <div class="mini-card soft">
+          <div class="action-title">Make it a winning experience</div>
+          <div class="action-sub">
+            Supporting where people gather increases your team’s sales potential. Show up where local attention is—schools, universities,
+            businesses, and families—and make Northwest visible. 
+          </div>
+
+          <div class="tip-card" style="margin-top: 14px;">
+            <div class="action-title">Mouse request essentials (2-minute checklist)</div>
+            <ol>
+              <li><strong>Pick 2 trusted teammates:</strong> one wears the suit, one is the handler.</li>
+              <li><strong>Handler runs safety + breaks</strong> (water, obstacles, crowd guidance).</li>
+              <li><strong>Both wear Northwest or Mouse shirts</strong> (request a shirt if needed).</li>
+              <li><strong>After event:</strong> pack all items back in the bag and send to Team Support Center.</li>
+            </ol>
+          </div>
+
+          <div class="mini-card" style="margin-top: 14px;">
+            <div class="action-title">Need creative or a promo?</div>
+            <div class="action-sub">
+              If you’ve got a big idea (flyer, video, communication, promotion), email Marketing:
+              <strong><span id="mktEmailText"></span></strong>
+            </div>
+          </div>
+
+          <div class="image-row" id="imageRow"></div>
+        </div>
+
+        <!-- RIGHT: Embedded form (primary CTA) -->
         <div class="embed-card">
           <div class="embed-topbar">
-            <div class="embed-title">Event Request Form</div>
-            <a class="mini-link" href="https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354" target="_blank" rel="noopener">
-              Open form in new tab
+            <div class="embed-title">Event Request Form (Smartsheet)</div>
+            <a class="mini-link" id="openFormTop" href="#" target="_blank" rel="noopener noreferrer">
+              Open in new tab →
             </a>
           </div>
 
           <div class="iframe-wrap iframe-tall">
             <iframe
-              title="Smartsheet Event Request Form"
-              src="https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354"
+              id="formFrame"
+              title="Event Request Form"
               loading="lazy"
               referrerpolicy="no-referrer"
             ></iframe>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- “What to request” + Images -->
+    <!-- ===================== -->
+    <!-- QUICK ACTIONS         -->
+    <!-- ===================== -->
+    <section class="section" id="actions">
+      <div class="section-header">
+        <h2>Quick Actions</h2>
+        <p class="muted">Lead with the Mouse. Back it up with materials. Follow through.</p>
+      </div>
+
+      <div class="quick-actions" id="quickActions"></div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- MOUSE PLAYBOOK        -->
+    <!-- ===================== -->
+    <section class="section" id="mouse-playbook">
+      <div class="section-header">
+        <h2>Mouse Playbook</h2>
+        <p class="muted">How to keep it extraordinary, safe, and on-brand.</p>
+      </div>
+
+      <div class="two-col">
         <div class="mini-card">
-          <h3 style="margin-top:0;">What counts as a great event?</h3>
-          <ul>
-            <li>High foot traffic + local decision makers</li>
-            <li>Clear “who we serve” match</li>
-            <li>Simple setup, strong follow-up</li>
-          </ul>
+          <div class="action-title">Do’s</div>
+          <div class="action-sub">
+            <ul style="margin: 10px 0 0 18px;">
+              <li>Handler stays engaging and guides Mouse safely through crowds/around obstacles.</li>
+              <li>Handler refers to the teammate in the suit as “Mouse.”</li>
+              <li>Handler and Mouse reflect the Northwest Way at all times.</li>
+              <li>If something happens (rips/stains/tears), don’t stress—Marketing maintains and cleans.</li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="image-row">
-            <!-- Swap these image paths to your real assets -->
-            <a class="image-tile" href="event-materials.html" aria-label="Event Materials">
-              <img src="images/Billboard.png" alt="Event Materials Preview" />
-              <span>Event Materials</span>
-            </a>
+        <div class="mini-card soft">
+          <div class="action-title">Don’ts</div>
+          <div class="action-sub">
+            <ul style="margin: 10px 0 0 18px;">
+              <li>The Mouse does not speak.</li>
+              <li>The Mouse does not remove its head in public.</li>
+              <li>Do not eat or drink while wearing the suit.</li>
+            </ul>
 
-            <a class="image-tile" href="catalog.html" aria-label="Catalog">
-              <img src="images/nwst-allservices-lb-120.png" alt="Catalog Preview" />
-              <span>Catalog</span>
+            <div style="margin-top: 12px;">
+              Questions or damage notes? Email:
+              <strong><span id="mktEmailText2"></span></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-card" style="margin-top: 14px;">
+        <div class="action-title">Mouse Suit Items (quick inventory)</div>
+        <div class="action-sub">
+          Head, T-shirt, body suit, two feet, two gloved hands, neck guard, Apple AirTag (included), plus handler teammate.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- CALENDAR              -->
+    <!-- ===================== -->
+    <section class="section" id="calendar">
+      <div class="section-header">
+        <h2>Event Calendar</h2>
+        <p class="muted">View-only. Updated live from Smartsheet.</p>
+      </div>
+
+      <div class="embed-card">
+        <div class="embed-topbar">
+          <div class="embed-title">Events Calendar (Smartsheet)</div>
+
+          <div class="embed-controls">
+            <button class="feature-btn" id="toggleLarge" type="button">Large Text</button>
+
+            <a class="mini-link" id="openCalendar" href="#" target="_blank" rel="noopener noreferrer">
+              Open Full View →
             </a>
           </div>
+        </div>
 
-          <div class="mini-card soft" style="margin-top:14px;">
-            <strong>Easy update later:</strong>
-            <p class="muted" style="margin:8px 0 0 0;">
-              When your form changes, you only replace the iframe <code>src</code> link above.
-              Same for the calendar embed.
-            </p>
+        <div class="iframe-wrap" id="calendarWrap">
+          <iframe
+            id="calendarFrame"
+            title="Event Calendar"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="mini-card soft" style="margin-top: 14px;">
+        <div class="action-title">Pro move</div>
+        <div class="action-sub">
+          Check the calendar first, then submit your request early so we can reserve the Mouse and prep the right materials.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- WHAT MARKETING PROVIDES -->
+    <!-- ===================== -->
+    <section class="section" id="materials">
+      <div class="section-header">
+        <h2>What Marketing Can Provide</h2>
+        <p class="muted">Marketing materials, event materials, and print collateral—built to help your team win locally.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="action-title">Most requested for events</div>
+          <div class="action-sub">
+            <ul style="margin: 10px 0 0 18px;">
+              <li><strong>The Mouse Suit</strong> (reserve it for upcoming events)</li>
+              <li>Pull-up banner</li>
+              <li>Branded tent</li>
+              <li>Tablecloth</li>
+              <li>Mouse booth backdrop (photo ops)</li>
+              <li>Mouse toss / cornhole game</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mini-card soft">
+          <div class="action-title">Easy add-ons that convert</div>
+          <div class="action-sub">
+            <ul style="margin: 10px 0 0 18px;">
+              <li>Leave behinds + door hangers (start conversations)</li>
+              <li>Takeover cards ($25 off green pest control)</li>
+              <li>Mouse tattoos (family-friendly touchpoint)</li>
+              <li>Thank you cards + review cards (follow-up momentum)</li>
+              <li>Branded pens + Post-it notepads</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-card" style="margin-top: 14px;">
+        <div class="action-title">Note</div>
+        <div class="action-sub">
+          If you need custom creative or a promotion request, reach out to Marketing at
+          <strong><span id="mktEmailText3"></span></strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- LEADERBOARD           -->
+    <!-- ===================== -->
+    <section class="section" id="leaderboard">
+      <div class="section-header">
+        <h2>Office Leaderboard</h2>
+        <p class="muted">Friendly competition. Real momentum. Bring the Mouse and take your market.</p>
+      </div>
+
+      <div class="leaderboard-grid" id="leaderboardGrid"></div>
+
+      <div class="two-col">
+        <div class="mini-card soft">
+          <div class="action-title">How to win (simple)</div>
+          <div class="action-sub">
+            1) Request early<br/>
+            2) Run monthly events<br/>
+            3) Send photos + notes to Marketing<br/>
+            4) Follow up (review ask / local post / partner thank you)
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="action-title">Points idea</div>
+          <div class="action-sub">
+            10 pts request submitted<br/>
+            10 pts event completed<br/>
+            5 pts photos submitted<br/>
+            5 pts follow-up posted
           </div>
         </div>
       </div>
@@ -193,43 +325,82 @@
 
   </main>
 
-  <!-- If you want the page protected behind your portal login, keep auth.js.
-       Your current auth redirects non-logged-in users to index.html :contentReference[oaicite:2]{index=2} -->
-  <script type="module" src="/scripts/auth.js"></script>
-
   <script>
-    // --- Leaderboard (super easy to update) ---
-    // Later, you can move this into /data/leaderboard.json and fetch it.
-    const leaderboard = [
-      { office: "Kennesaw", events: 6, points: 82, highlight: "Most consistent" },
-      { office: "Marietta", events: 5, points: 75, highlight: "Strong community partners" },
-      { office: "Alpharetta", events: 4, points: 64, highlight: "Best attendance" },
-      { office: "Columbus", events: 3, points: 52, highlight: "Biggest growth" },
-      { office: "Tucker", events: 3, points: 49, highlight: "Best follow-up" }
-    ];
-
-    const grid = document.getElementById("leaderboardGrid");
-    grid.innerHTML = leaderboard.map((row, idx) => `
-      <div class="leader-card ${idx === 0 ? "leader" : ""}">
-        <div class="leader-rank">#${idx + 1}</div>
-        <div class="leader-office">${row.office}</div>
-        <div class="leader-stats">
-          <span><strong>${row.events}</strong> events</span>
-          <span><strong>${row.points}</strong> points</span>
-        </div>
-        <div class="leader-note">${row.highlight}</div>
-      </div>
+    // ===== Quick action tiles =====
+    const quickActions = document.getElementById("quickActions");
+    quickActions.innerHTML = EVENTS_CONFIG.quickLinks.map(item => `
+      <a class="action-card" href="${item.href}">
+        <div class="action-title">${item.title}</div>
+        <div class="action-sub">${item.sub}</div>
+      </a>
     `).join("");
 
-    // Optional: lightweight search that jumps to sections
+    // ===== Leaderboard render =====
+    const leaderboardGrid = document.getElementById("leaderboardGrid");
+    leaderboardGrid.innerHTML = EVENTS_CONFIG.leaderboard
+      .sort((a, b) => (b.points || 0) - (a.points || 0))
+      .map((row, idx) => `
+        <div class="leader-card ${idx === 0 ? "leader" : ""}">
+          <div class="leader-rank">#${idx + 1}</div>
+          <div class="leader-office">${row.office}</div>
+          <div class="leader-stats">
+            <span><strong>${row.events}</strong> events</span>
+            <span><strong>${row.points}</strong> pts</span>
+          </div>
+          <div class="leader-note">${row.highlight || ""}</div>
+        </div>
+      `).join("");
+
+    // ===== Image tiles =====
+    const imageRow = document.getElementById("imageRow");
+    imageRow.innerHTML = EVENTS_CONFIG.imageTiles.map(tile => `
+      <a class="image-tile" href="${tile.href}">
+        <img src="${tile.img}" alt="${tile.title}" />
+        <span>${tile.title}</span>
+      </a>
+    `).join("");
+
+    // ===== Embed URLs =====
+    const calendarFrame = document.getElementById("calendarFrame");
+    const formFrame = document.getElementById("formFrame");
+
+    calendarFrame.src = EVENTS_CONFIG.calendarEmbedUrl;
+    formFrame.src = EVENTS_CONFIG.requestFormUrl;
+
+    document.getElementById("openCalendar").href = EVENTS_CONFIG.calendarEmbedUrl;
+    document.getElementById("openFormTop").href = EVENTS_CONFIG.requestFormUrl;
+
+    // Email fill
+    const email = EVENTS_CONFIG.marketingEmail;
+    document.getElementById("mktEmailText").textContent = email;
+    document.getElementById("mktEmailText2").textContent = email;
+    document.getElementById("mktEmailText3").textContent = email;
+
+    // ===== Large Text toggle (best we can do with an embed) =====
+    // Note: we cannot directly change Smartsheet’s internal font sizes via iframe.
+    // This toggle increases the embed area and adds a "large" class for layout.
+    const calendarWrap = document.getElementById("calendarWrap");
+    document.getElementById("toggleLarge").addEventListener("click", () => {
+      calendarWrap.classList.toggle("is-large");
+      // If your CSS supports it, you can increase height when .is-large is present
+      // Example (in CSS): .iframe-wrap.is-large { height: 900px; } etc.
+      calendarWrap.style.height = calendarWrap.classList.contains("is-large") ? "900px" : "";
+      calendarWrap.style.aspectRatio = calendarWrap.classList.contains("is-large") ? "auto" : "";
+    });
+
+    // ===== Lightweight search: Enter to jump =====
     document.getElementById("portalSearch")?.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
-      const q = e.target.value.toLowerCase();
-      if (q.includes("calendar")) document.getElementById("calendar")?.scrollIntoView({behavior:"smooth"});
-      if (q.includes("request") || q.includes("form")) document.getElementById("request")?.scrollIntoView({behavior:"smooth"});
-      if (q.includes("materials")) window.location.href = "event-materials.html";
-      if (q.includes("catalog")) window.location.href = "catalog.html";
+      const q = (e.target.value || "").toLowerCase();
+
+      if (q.includes("mouse")) document.getElementById("mouse-playbook").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("request") || q.includes("form")) document.getElementById("request").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("calendar")) document.getElementById("calendar").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("leader")) document.getElementById("leaderboard").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("materials")) document.getElementById("materials").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("catalog")) window.location.href = "catalog.html";
     });
   </script>
+
 </body>
 </html>
