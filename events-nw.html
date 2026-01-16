@@ -19,7 +19,7 @@
 
       <div class="search-wrapper">
         <div class="search-container">
-          <input type="text" id="portalSearch" placeholder="Search: mouse, request, calendar, leaderboard, materials" />
+          <input type="text" id="portalSearch" placeholder="Search: request, mouse, calendar, leaderboard" />
         </div>
 
         <nav class="navbar">
@@ -32,17 +32,18 @@
     </div>
   </header>
 
-  <!-- HERO (Mouse-forward) -->
+  <!-- HERO (Form-first) -->
   <section class="hero-banner">
-    <h1 class="hero-title">Bring The Mouse. Win the Community.</h1>
+    <h1 class="hero-title">Request Event Support + The Mouse</h1>
     <p class="hero-subtitle">
-      One Team. One Vision. We’re all about a winning experience—show up where local attention is and make it unforgettable.
+      Fastest way to get support: submit the request form first. Marketing will coordinate Mouse + materials.
     </p>
 
     <div class="hero-actions">
-      <a class="pill-button" href="#request">Request Event + Mouse</a>
+      <a class="pill-button" href="#request">Open Request Form</a>
       <a class="pill-button ghost" href="#mouse-playbook">Mouse Playbook</a>
       <a class="pill-button ghost" href="#calendar">View Calendar</a>
+      <a class="pill-button ghost" href="#leaderboard">Leaderboard</a>
     </div>
   </section>
 
@@ -55,104 +56,83 @@
       const EVENTS_CONFIG = {
         calendarEmbedUrl: "https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de",
         requestFormUrl: "https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354",
-
         marketingEmail: "marketingcommunications@callnorthwest.com",
 
-        // Manual friendly competition (easy update)
+        // Leaderboard: NO POINTS (events only)
         leaderboard: [
-          { office: "Columbus", events: 5, points: 52, highlight: "Biggest growth" },
-          { office: "Tucker", events: 3, points: 49, highlight: "Best follow-up" },
-          { office: "Marietta", events: 4, points: 44, highlight: "Most community stops" },
-          { office: "Alpharetta", events: 2, points: 31, highlight: "Strong momentum" },
-          { office: "Kennesaw", events: 2, points: 28, highlight: "New push" }
-        ],
-
-        quickLinks: [
-          { title: "Request Event + Mouse", sub: "Fastest way to lock support", href: "#request" },
-          { title: "Mouse Playbook", sub: "Do’s/Don’ts + checklist", href: "#mouse-playbook" },
-          { title: "View Calendar", sub: "See upcoming events live", href: "#calendar" },
-          { title: "Event Materials", sub: "Banners, tents, tablecloths", href: "event-materials.html" }
-        ],
-
-        imageTiles: [
-          { title: "Event Materials", href: "event-materials.html", img: "images/event-materials.jpg" },
-          { title: "Marketing Catalog", href: "catalog.html", img: "images/catalog.jpg" }
+          { office: "Columbus", events: 5, highlight: "Biggest growth" },
+          { office: "Tucker", events: 3, highlight: "Best follow-up" },
+          { office: "Marietta", events: 4, highlight: "Most community stops" },
+          { office: "Alpharetta", events: 2, highlight: "Strong momentum" },
+          { office: "Kennesaw", events: 2, highlight: "New push" }
         ]
       };
     </script>
 
     <!-- ===================== -->
-    <!-- TOP: REQUEST FORM      -->
+    <!-- TOP: REQUEST FORM (BIGGER) -->
     <!-- ===================== -->
     <section class="section" id="request">
       <div class="section-header">
-        <h2>Request Event Support + The Mouse</h2>
+        <h2>Submit Your Event Request</h2>
         <p class="muted">
-          Reserve the Mouse for upcoming events and bring the brand to life. Submit the form first—Marketing coordinates the rest.
+          Reserve the Mouse and request event materials. Submit once—Marketing coordinates the rest.
         </p>
       </div>
 
-      <div class="two-col">
-        <!-- LEFT: Mouse-forward instructions -->
-        <div class="mini-card soft">
-          <div class="action-title">Make it a winning experience</div>
-          <div class="action-sub">
-            Supporting where people gather increases your team’s sales potential. Show up where local attention is—schools, universities,
-            businesses, and families—and make Northwest visible. 
-          </div>
+      <!-- Full-width, taller embed card -->
+      <div class="embed-card">
+        <div class="embed-topbar">
+          <div class="embed-title">Event Request Form (Smartsheet)</div>
 
-          <div class="tip-card" style="margin-top: 14px;">
-            <div class="action-title">Mouse request essentials (2-minute checklist)</div>
-            <ol>
-              <li><strong>Pick 2 trusted teammates:</strong> one wears the suit, one is the handler.</li>
-              <li><strong>Handler runs safety + breaks</strong> (water, obstacles, crowd guidance).</li>
-              <li><strong>Both wear Northwest or Mouse shirts</strong> (request a shirt if needed).</li>
-              <li><strong>After event:</strong> pack all items back in the bag and send to Team Support Center.</li>
-            </ol>
-          </div>
-
-          <div class="mini-card" style="margin-top: 14px;">
-            <div class="action-title">Need creative or a promo?</div>
-            <div class="action-sub">
-              If you’ve got a big idea (flyer, video, communication, promotion), email Marketing:
-              <strong><span id="mktEmailText"></span></strong>
-            </div>
-          </div>
-
-          <div class="image-row" id="imageRow"></div>
-        </div>
-
-        <!-- RIGHT: Embedded form (primary CTA) -->
-        <div class="embed-card">
-          <div class="embed-topbar">
-            <div class="embed-title">Event Request Form (Smartsheet)</div>
+          <div class="embed-controls">
             <a class="mini-link" id="openFormTop" href="#" target="_blank" rel="noopener noreferrer">
               Open in new tab →
             </a>
           </div>
+        </div>
 
-          <div class="iframe-wrap iframe-tall">
-            <iframe
-              id="formFrame"
-              title="Event Request Form"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-            ></iframe>
+        <!-- Inline height bump without CSS changes -->
+        <div class="iframe-wrap" style="height: 980px;">
+          <iframe
+            id="formFrame"
+            title="Event Request Form"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Mouse-first guidance underneath (cleaner, no bullet clutter) -->
+      <div class="two-col" style="margin-top: 14px;">
+        <div class="mini-card soft">
+          <div class="action-title">Make the Mouse a win</div>
+          <div class="action-sub">
+            Bring 2 trusted teammates: one wears the suit, one is the handler. The handler guides safety, breaks,
+            crowd flow, and photos. Keep it fun and on-brand.
+          </div>
+
+          <div class="mini-card" style="margin-top: 12px;">
+            <div class="action-title">Need help fast?</div>
+            <div class="action-sub">
+              For promos, creative, or questions email Marketing:
+              <strong><span id="mktEmailText"></span></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <div class="action-title">What to include in your request</div>
+          <div class="action-sub">
+            <ol style="margin: 10px 0 0 18px;">
+              <li>Event date + location</li>
+              <li>Office + point of contact</li>
+              <li>Goal (leads, awareness, recruiting)</li>
+              <li>What you need (Mouse, tent, banner, tablecloth)</li>
+            </ol>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ===================== -->
-    <!-- QUICK ACTIONS         -->
-    <!-- ===================== -->
-    <section class="section" id="actions">
-      <div class="section-header">
-        <h2>Quick Actions</h2>
-        <p class="muted">Lead with the Mouse. Back it up with materials. Follow through.</p>
-      </div>
-
-      <div class="quick-actions" id="quickActions"></div>
     </section>
 
     <!-- ===================== -->
@@ -160,8 +140,8 @@
     <!-- ===================== -->
     <section class="section" id="mouse-playbook">
       <div class="section-header">
-        <h2>Mouse Playbook</h2>
-        <p class="muted">How to keep it extraordinary, safe, and on-brand.</p>
+        <h2>Mouse Suit Playbook</h2>
+        <p class="muted">Simple rules that keep it safe, consistent, and professional.</p>
       </div>
 
       <div class="two-col">
@@ -169,10 +149,10 @@
           <div class="action-title">Do’s</div>
           <div class="action-sub">
             <ul style="margin: 10px 0 0 18px;">
-              <li>Handler stays engaging and guides Mouse safely through crowds/around obstacles.</li>
-              <li>Handler refers to the teammate in the suit as “Mouse.”</li>
-              <li>Handler and Mouse reflect the Northwest Way at all times.</li>
-              <li>If something happens (rips/stains/tears), don’t stress—Marketing maintains and cleans.</li>
+              <li>Handler stays close and guides the Mouse through crowds and obstacles</li>
+              <li>Handler refers to the teammate in suit as “Mouse”</li>
+              <li>Keep the experience family-friendly and upbeat</li>
+              <li>Pack everything back in the bag after the event</li>
             </ul>
           </div>
         </div>
@@ -181,15 +161,10 @@
           <div class="action-title">Don’ts</div>
           <div class="action-sub">
             <ul style="margin: 10px 0 0 18px;">
-              <li>The Mouse does not speak.</li>
-              <li>The Mouse does not remove its head in public.</li>
-              <li>Do not eat or drink while wearing the suit.</li>
+              <li>The Mouse does not speak</li>
+              <li>The Mouse does not remove its head in public</li>
+              <li>No eating or drinking while wearing the suit</li>
             </ul>
-
-            <div style="margin-top: 12px;">
-              Questions or damage notes? Email:
-              <strong><span id="mktEmailText2"></span></strong>
-            </div>
           </div>
         </div>
       </div>
@@ -197,7 +172,7 @@
       <div class="mini-card" style="margin-top: 14px;">
         <div class="action-title">Mouse Suit Items (quick inventory)</div>
         <div class="action-sub">
-          Head, T-shirt, body suit, two feet, two gloved hands, neck guard, Apple AirTag (included), plus handler teammate.
+          Head, T-shirt, body suit, two feet, two gloved hands, neck guard, Apple AirTag (included).
         </div>
       </div>
     </section>
@@ -217,7 +192,6 @@
 
           <div class="embed-controls">
             <button class="feature-btn" id="toggleLarge" type="button">Large Text</button>
-
             <a class="mini-link" id="openCalendar" href="#" target="_blank" rel="noopener noreferrer">
               Open Full View →
             </a>
@@ -233,91 +207,31 @@
           ></iframe>
         </div>
       </div>
-
-      <div class="mini-card soft" style="margin-top: 14px;">
-        <div class="action-title">Pro move</div>
-        <div class="action-sub">
-          Check the calendar first, then submit your request early so we can reserve the Mouse and prep the right materials.
-        </div>
-      </div>
     </section>
 
     <!-- ===================== -->
-    <!-- WHAT MARKETING PROVIDES -->
-    <!-- ===================== -->
-    <section class="section" id="materials">
-      <div class="section-header">
-        <h2>What Marketing Can Provide</h2>
-        <p class="muted">Marketing materials, event materials, and print collateral—built to help your team win locally.</p>
-      </div>
-
-      <div class="two-col">
-        <div class="mini-card">
-          <div class="action-title">Most requested for events</div>
-          <div class="action-sub">
-            <ul style="margin: 10px 0 0 18px;">
-              <li><strong>The Mouse Suit</strong> (reserve it for upcoming events)</li>
-              <li>Pull-up banner</li>
-              <li>Branded tent</li>
-              <li>Tablecloth</li>
-              <li>Mouse booth backdrop (photo ops)</li>
-              <li>Mouse toss / cornhole game</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mini-card soft">
-          <div class="action-title">Easy add-ons that convert</div>
-          <div class="action-sub">
-            <ul style="margin: 10px 0 0 18px;">
-              <li>Leave behinds + door hangers (start conversations)</li>
-              <li>Takeover cards ($25 off green pest control)</li>
-              <li>Mouse tattoos (family-friendly touchpoint)</li>
-              <li>Thank you cards + review cards (follow-up momentum)</li>
-              <li>Branded pens + Post-it notepads</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="mini-card" style="margin-top: 14px;">
-        <div class="action-title">Note</div>
-        <div class="action-sub">
-          If you need custom creative or a promotion request, reach out to Marketing at
-          <strong><span id="mktEmailText3"></span></strong>.
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== -->
-    <!-- LEADERBOARD           -->
+    <!-- LEADERBOARD (NO POINTS) -->
     <!-- ===================== -->
     <section class="section" id="leaderboard">
       <div class="section-header">
         <h2>Office Leaderboard</h2>
-        <p class="muted">Friendly competition. Real momentum. Bring the Mouse and take your market.</p>
+        <p class="muted">Friendly competition. Real momentum. Who’s showing up most this quarter?</p>
       </div>
 
       <div class="leaderboard-grid" id="leaderboardGrid"></div>
 
       <div class="two-col">
         <div class="mini-card soft">
-          <div class="action-title">How to win (simple)</div>
+          <div class="action-title">How to climb the board</div>
           <div class="action-sub">
-            1) Request early<br/>
-            2) Run monthly events<br/>
-            3) Send photos + notes to Marketing<br/>
-            4) Follow up (review ask / local post / partner thank you)
+            Request early. Run monthly. Capture photos. Follow up with partners and customers.
           </div>
         </div>
 
         <div class="mini-card">
-          <div class="action-title">Points idea</div>
+          <div class="action-title">What counts</div>
           <div class="action-sub">
-            10 pts request submitted<br/>
-            10 pts event completed<br/>
-            5 pts photos submitted<br/>
-            5 pts follow-up posted
+            Events requested + events completed + consistent presence.
           </div>
         </div>
       </div>
@@ -326,40 +240,6 @@
   </main>
 
   <script>
-    // ===== Quick action tiles =====
-    const quickActions = document.getElementById("quickActions");
-    quickActions.innerHTML = EVENTS_CONFIG.quickLinks.map(item => `
-      <a class="action-card" href="${item.href}">
-        <div class="action-title">${item.title}</div>
-        <div class="action-sub">${item.sub}</div>
-      </a>
-    `).join("");
-
-    // ===== Leaderboard render =====
-    const leaderboardGrid = document.getElementById("leaderboardGrid");
-    leaderboardGrid.innerHTML = EVENTS_CONFIG.leaderboard
-      .sort((a, b) => (b.points || 0) - (a.points || 0))
-      .map((row, idx) => `
-        <div class="leader-card ${idx === 0 ? "leader" : ""}">
-          <div class="leader-rank">#${idx + 1}</div>
-          <div class="leader-office">${row.office}</div>
-          <div class="leader-stats">
-            <span><strong>${row.events}</strong> events</span>
-            <span><strong>${row.points}</strong> pts</span>
-          </div>
-          <div class="leader-note">${row.highlight || ""}</div>
-        </div>
-      `).join("");
-
-    // ===== Image tiles =====
-    const imageRow = document.getElementById("imageRow");
-    imageRow.innerHTML = EVENTS_CONFIG.imageTiles.map(tile => `
-      <a class="image-tile" href="${tile.href}">
-        <img src="${tile.img}" alt="${tile.title}" />
-        <span>${tile.title}</span>
-      </a>
-    `).join("");
-
     // ===== Embed URLs =====
     const calendarFrame = document.getElementById("calendarFrame");
     const formFrame = document.getElementById("formFrame");
@@ -373,32 +253,39 @@
     // Email fill
     const email = EVENTS_CONFIG.marketingEmail;
     document.getElementById("mktEmailText").textContent = email;
-    document.getElementById("mktEmailText2").textContent = email;
-    document.getElementById("mktEmailText3").textContent = email;
 
-    // ===== Large Text toggle (best we can do with an embed) =====
-    // Note: we cannot directly change Smartsheet’s internal font sizes via iframe.
-    // This toggle increases the embed area and adds a "large" class for layout.
+    // ===== Large Text toggle (best we can do inside an embed) =====
     const calendarWrap = document.getElementById("calendarWrap");
     document.getElementById("toggleLarge").addEventListener("click", () => {
       calendarWrap.classList.toggle("is-large");
-      // If your CSS supports it, you can increase height when .is-large is present
-      // Example (in CSS): .iframe-wrap.is-large { height: 900px; } etc.
-      calendarWrap.style.height = calendarWrap.classList.contains("is-large") ? "900px" : "";
+      calendarWrap.style.height = calendarWrap.classList.contains("is-large") ? "980px" : "";
       calendarWrap.style.aspectRatio = calendarWrap.classList.contains("is-large") ? "auto" : "";
     });
+
+    // ===== Leaderboard render (events only) =====
+    const leaderboardGrid = document.getElementById("leaderboardGrid");
+    leaderboardGrid.innerHTML = EVENTS_CONFIG.leaderboard
+      .sort((a, b) => (b.events || 0) - (a.events || 0))
+      .map((row, idx) => `
+        <div class="leader-card ${idx === 0 ? "leader" : ""}">
+          <div class="leader-rank">#${idx + 1}</div>
+          <div class="leader-office">${row.office}</div>
+          <div class="leader-stats">
+            <span><strong>${row.events}</strong> events</span>
+          </div>
+          <div class="leader-note">${row.highlight || ""}</div>
+        </div>
+      `).join("");
 
     // ===== Lightweight search: Enter to jump =====
     document.getElementById("portalSearch")?.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
       const q = (e.target.value || "").toLowerCase();
 
-      if (q.includes("mouse")) document.getElementById("mouse-playbook").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("request") || q.includes("form")) document.getElementById("request").scrollIntoView({ behavior: "smooth" });
+      if (q.includes("request") || q.includes("form")) document.getElementById("request").scrollIntoView({ behavior: "smooth" });
+      else if (q.includes("mouse")) document.getElementById("mouse-playbook").scrollIntoView({ behavior: "smooth" });
       else if (q.includes("calendar")) document.getElementById("calendar").scrollIntoView({ behavior: "smooth" });
       else if (q.includes("leader")) document.getElementById("leaderboard").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("materials")) document.getElementById("materials").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("catalog")) window.location.href = "catalog.html";
     });
   </script>
 

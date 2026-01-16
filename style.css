@@ -745,3 +745,7 @@ main, .pdf-embed {
   .header { padding: 1rem; }
   .hero-title { font-size: 2.1rem; }
 }
+/* Make the top request embed feel like the hero */
+#request .embed-card { box-shadow: 0 14px 40px rgba(133,196,70,0.22); }
+#request .embed-title { font-size: 1.15rem; }
+#request .section-header h2 { font-size: 2.1rem; }
