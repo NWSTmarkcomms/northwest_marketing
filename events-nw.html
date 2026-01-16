@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | Marketing Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Keep this if your catalog uses hiddenFrame patterns -->
+  <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+  <!-- Header matches your existing portal layout -->
+  <header class="header">
+    <div class="logo-nav-container">
+      <img src="images/northwest.png" alt="Northwest Logo" class="logo" />
+
+      <div class="search-wrapper">
+        <div class="search-container">
+          <input type="text" id="portalSearch" placeholder="Search events + resources..." />
+        </div>
+
+        <nav class="navbar">
+          <a href="catalog.html">All Materials</a>
+          <a class="active" href="events.html">Events</a>
+          <a href="event-materials.html">Event Materials</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <h1 class="hero-title">Events Hub</h1>
+    <p class="hero-subtitle">
+      Plan smarter. Show up bigger. Stack wins for your office.
+    </p>
+
+    <div class="hero-actions">
+      <a class="pill-button" href="#request">Request an Event</a>
+      <a class="pill-button ghost" href="#calendar">View the Calendar</a>
+      <a class="pill-button ghost" href="event-materials.html">Grab Event Materials</a>
+    </div>
+  </section>
+
+  <main class="page-shell">
+
+    <!-- “Galvanize competition” section -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Office Leaderboard</h2>
+        <p class="muted">
+          Make events a game. Celebrate participation, consistency, and community impact.
+        </p>
+      </div>
+
+      <div class="leaderboard-grid" id="leaderboardGrid"></div>
+
+      <div class="mini-card tip-card">
+        <strong>How to run this:</strong>
+        <ol>
+          <li>Use “Events Hosted” as your main score.</li>
+          <li>Give bonus points for first-time events, community partners, and teammate attendance.</li>
+          <li>Spotlight the top 3 offices monthly in Teams.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Quick links to “make it easy” -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Fast Actions</h2>
+        <p class="muted">One click. No hunting.</p>
+      </div>
+
+      <div class="quick-actions">
+        <a class="action-card" href="event-materials.html">
+          <div class="action-title">Event Materials</div>
+          <div class="action-sub">Tables, banners, leave-behinds, more</div>
+        </a>
+
+        <a class="action-card" href="catalog.html">
+          <div class="action-title">Full Catalog</div>
+          <div class="action-sub">All materials in one place</div>
+        </a>
+
+        <a class="action-card" href="#calendar">
+          <div class="action-title">See Upcoming Events</div>
+          <div class="action-sub">Calendar view</div>
+        </a>
+
+        <a class="action-card" href="#request">
+          <div class="action-title">Submit an Event Request</div>
+          <div class="action-sub">Smartsheet form</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Calendar embed -->
+    <section class="section" id="calendar">
+      <div class="section-header">
+        <h2>Event Calendar</h2>
+        <p class="muted">
+          View-only calendar. No Smartsheet login required.
+        </p>
+      </div>
+
+      <div class="embed-card">
+        <div class="embed-topbar">
+          <div class="embed-title">Northwest Events Calendar</div>
+          <a class="mini-link" href="https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de" target="_blank" rel="noopener">
+            Open in new tab
+          </a>
+        </div>
+
+        <div class="iframe-wrap">
+          <iframe
+            title="Smartsheet Published Calendar"
+            src="https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Request form embed -->
+    <section class="section" id="request">
+      <div class="section-header">
+        <h2>Request an Event</h2>
+        <p class="muted">
+          Submit once. Marketing coordinates the rest.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="embed-card">
+          <div class="embed-topbar">
+            <div class="embed-title">Event Request Form</div>
+            <a class="mini-link" href="https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354" target="_blank" rel="noopener">
+              Open form in new tab
+            </a>
+          </div>
+
+          <div class="iframe-wrap iframe-tall">
+            <iframe
+              title="Smartsheet Event Request Form"
+              src="https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- “What to request” + Images -->
+        <div class="mini-card">
+          <h3 style="margin-top:0;">What counts as a great event?</h3>
+          <ul>
+            <li>High foot traffic + local decision makers</li>
+            <li>Clear “who we serve” match</li>
+            <li>Simple setup, strong follow-up</li>
+          </ul>
+
+          <div class="image-row">
+            <!-- Swap these image paths to your real assets -->
+            <a class="image-tile" href="event-materials.html" aria-label="Event Materials">
+              <img src="images/Billboard.png" alt="Event Materials Preview" />
+              <span>Event Materials</span>
+            </a>
+
+            <a class="image-tile" href="catalog.html" aria-label="Catalog">
+              <img src="images/nwst-allservices-lb-120.png" alt="Catalog Preview" />
+              <span>Catalog</span>
+            </a>
+          </div>
+
+          <div class="mini-card soft" style="margin-top:14px;">
+            <strong>Easy update later:</strong>
+            <p class="muted" style="margin:8px 0 0 0;">
+              When your form changes, you only replace the iframe <code>src</code> link above.
+              Same for the calendar embed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- If you want the page protected behind your portal login, keep auth.js.
+       Your current auth redirects non-logged-in users to index.html :contentReference[oaicite:2]{index=2} -->
+  <script type="module" src="/scripts/auth.js"></script>
+
+  <script>
+    // --- Leaderboard (super easy to update) ---
+    // Later, you can move this into /data/leaderboard.json and fetch it.
+    const leaderboard = [
+      { office: "Kennesaw", events: 6, points: 82, highlight: "Most consistent" },
+      { office: "Marietta", events: 5, points: 75, highlight: "Strong community partners" },
+      { office: "Alpharetta", events: 4, points: 64, highlight: "Best attendance" },
+      { office: "Columbus", events: 3, points: 52, highlight: "Biggest growth" },
+      { office: "Tucker", events: 3, points: 49, highlight: "Best follow-up" }
+    ];
+
+    const grid = document.getElementById("leaderboardGrid");
+    grid.innerHTML = leaderboard.map((row, idx) => `
+      <div class="leader-card ${idx === 0 ? "leader" : ""}">
+        <div class="leader-rank">#${idx + 1}</div>
+        <div class="leader-office">${row.office}</div>
+        <div class="leader-stats">
+          <span><strong>${row.events}</strong> events</span>
+          <span><strong>${row.points}</strong> points</span>
+        </div>
+        <div class="leader-note">${row.highlight}</div>
+      </div>
+    `).join("");
+
+    // Optional: lightweight search that jumps to sections
+    document.getElementById("portalSearch")?.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      const q = e.target.value.toLowerCase();
+      if (q.includes("calendar")) document.getElementById("calendar")?.scrollIntoView({behavior:"smooth"});
+      if (q.includes("request") || q.includes("form")) document.getElementById("request")?.scrollIntoView({behavior:"smooth"});
+      if (q.includes("materials")) window.location.href = "event-materials.html";
+      if (q.includes("catalog")) window.location.href = "catalog.html";
+    });
+  </script>
+</body>
+</html>
