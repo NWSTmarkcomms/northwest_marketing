@@ -19,7 +19,7 @@
 
       <div class="search-wrapper">
         <div class="search-container">
-          <input type="text" id="portalSearch" placeholder="Search: request, mouse, calendar, leaderboard" />
+          <input type="text" id="portalSearch" placeholder="Search: request, mouse, calendar" />
         </div>
 
         <nav class="navbar">
@@ -36,12 +36,12 @@
   <section class="hero-banner">
     <h1 class="hero-title">Request Event Support + The Mouse</h1>
     <p class="hero-subtitle">
-      Fastest way to a winning event -> Submit the request form first. Marketing will send a confirmation and coordinate your materials.
+      Fastest way to a winning event → Submit the request form first. Marketing will send a confirmation and coordinate your materials.
     </p>
 
     <div class="hero-actions">
       <a class="pill-button" href="#request">Event & Mouse Suit Request Form</a>
-      <a class="pill-button ghost" href="#calendar">Event Calendar</a>
+      <a class="pill-button ghost" href="#calendar-section">Event Calendar</a>
     </div>
   </section>
 
@@ -52,16 +52,16 @@
     <!-- ===================== -->
     <script>
       const EVENTS_CONFIG = {
+        // If this is a Smartsheet publish calendar page, keep it here:
         calendarEmbedUrl: "https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de",
+        // Smartsheet form link (works great in iframe):
         requestFormUrl: "https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354",
-        marketingEmail: "marketingcommunications@callnorthwest.com",
-
-
+        marketingEmail: "marketingcommunications@callnorthwest.com"
       };
     </script>
 
     <!-- ===================== -->
-    <!-- TOP: REQUEST FORM (BIGGER) -->
+    <!-- TOP: REQUEST FORM     -->
     <!-- ===================== -->
     <section class="section" id="request">
       <div class="section-header">
@@ -71,7 +71,6 @@
         </p>
       </div>
 
-      <!-- Full-width, taller embed card -->
       <div class="embed-card">
         <div class="embed-topbar">
           <div class="embed-title">Event Request Form (Smartsheet)</div>
@@ -83,7 +82,7 @@
           </div>
         </div>
 
-        <!-- Inline height bump without CSS changes -->
+        <!-- Taller form embed -->
         <div class="iframe-wrap" style="height: 980px;">
           <iframe
             id="formFrame"
@@ -94,13 +93,15 @@
         </div>
       </div>
 
-
+      <p class="muted" style="margin-top: 12px;">
+        Questions? Email <a href="#" id="marketingEmailLink"></a>.
+      </p>
     </section>
 
     <!-- ===================== -->
-    <!-- CALENDAR              -->
+    <!-- CALENDAR (IFRAME)     -->
     <!-- ===================== -->
-    <section class="section" id="calendar">
+    <section class="section" id="calendar-section">
       <div class="section-header">
         <h2>Event Calendar</h2>
         <p class="muted">View-only. Updated live from Smartsheet.</p>
@@ -118,7 +119,7 @@
           </div>
         </div>
 
-        <div class="iframe-wrap" id="calendarWrap">
+        <div class="iframe-wrap" id="calendarWrap" style="height: 820px;">
           <iframe
             id="calendarFrame"
             title="Event Calendar"
@@ -129,35 +130,10 @@
       </div>
     </section>
 
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@6.1.11/index.global.min.js"></script>
-
-<div id="calendar"></div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      height: 700,
-      events: {
-        url: 'https://publish.smartsheet.com/1aeb344d2d3c45198766f494147587bc.ics',
-        format: 'ics'
-      }
-    });
-
-    calendar.render();
-  });
-</script>
-
-
-
   </main>
 
   <script>
-    // ===== Embed URLs =====
+    // ===== Assign Embed URLs =====
     const calendarFrame = document.getElementById("calendarFrame");
     const formFrame = document.getElementById("formFrame");
 
@@ -167,42 +143,29 @@
     document.getElementById("openCalendar").href = EVENTS_CONFIG.calendarEmbedUrl;
     document.getElementById("openFormTop").href = EVENTS_CONFIG.requestFormUrl;
 
-    // Email fill
+    // ===== Marketing email =====
     const email = EVENTS_CONFIG.marketingEmail;
-    document.getElementById("mktEmailText").textContent = email;
+    const emailLink = document.getElementById("marketingEmailLink");
+    emailLink.textContent = email;
+    emailLink.href = `mailto:${email}`;
 
-    // ===== Large Text toggle (best we can do inside an embed) =====
+    // ===== Large Text toggle (increases iframe container size) =====
     const calendarWrap = document.getElementById("calendarWrap");
     document.getElementById("toggleLarge").addEventListener("click", () => {
-      calendarWrap.classList.toggle("is-large");
-      calendarWrap.style.height = calendarWrap.classList.contains("is-large") ? "980px" : "";
-      calendarWrap.style.aspectRatio = calendarWrap.classList.contains("is-large") ? "auto" : "";
+      const isLarge = calendarWrap.classList.toggle("is-large");
+      calendarWrap.style.height = isLarge ? "1100px" : "820px";
     });
-
-    // ===== Leaderboard render (events only) =====
-    const leaderboardGrid = document.getElementById("leaderboardGrid");
-    leaderboardGrid.innerHTML = EVENTS_CONFIG.leaderboard
-      .sort((a, b) => (b.events || 0) - (a.events || 0))
-      .map((row, idx) => `
-        <div class="leader-card ${idx === 0 ? "leader" : ""}">
-          <div class="leader-rank">#${idx + 1}</div>
-          <div class="leader-office">${row.office}</div>
-          <div class="leader-stats">
-            <span><strong>${row.events}</strong> events</span>
-          </div>
-          <div class="leader-note">${row.highlight || ""}</div>
-        </div>
-      `).join("");
 
     // ===== Lightweight search: Enter to jump =====
     document.getElementById("portalSearch")?.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
       const q = (e.target.value || "").toLowerCase();
 
-      if (q.includes("request") || q.includes("form")) document.getElementById("request").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("mouse")) document.getElementById("mouse-playbook").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("calendar")) document.getElementById("calendar").scrollIntoView({ behavior: "smooth" });
-      else if (q.includes("leader")) document.getElementById("leaderboard").scrollIntoView({ behavior: "smooth" });
+      if (q.includes("request") || q.includes("form")) {
+        document.getElementById("request").scrollIntoView({ behavior: "smooth" });
+      } else if (q.includes("calendar")) {
+        document.getElementById("calendar-section").scrollIntoView({ behavior: "smooth" });
+      }
     });
   </script>
 
