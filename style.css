@@ -749,3 +749,9 @@ main, .pdf-embed {
 #request .embed-card { box-shadow: 0 14px 40px rgba(133,196,70,0.22); }
 #request .embed-title { font-size: 1.15rem; }
 #request .section-header h2 { font-size: 2.1rem; }
+
+#calendar {
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
