@@ -197,7 +197,7 @@
   </label>
 
    <div class="product-details">
-      <form class="material-request-form" onsubmit="handleFormSubmit(event)">
+<form class="material-request-form" onsubmit="handleFormSubmit(event)">
   <input type="text" name="requesterName" placeholder="Requester / Manager Name" required />
   <input type="email" name="requesterEmail" placeholder="Requester / Manager Email" required />
   <input type="email" name="managerEmail" placeholder="Additional Manager Email (optional)" />
@@ -230,12 +230,15 @@
   />
 
   <button type="submit" class="button">Request</button>
-</form>
 
-          <p id="successMessage" style="display:none; color:green; margin-top:10px;">
-  🥳 Stay tuned for an email confirmation!
-</p>
-        </div>
+  <p class="successMessage" style="display:none; color:green; margin-top:10px;">
+    🥳 Stay tuned for an email confirmation!
+  </p>
+
+  <p class="errorMessage" style="display:none; color:red; margin-top:10px;">
+    There was a problem submitting your request.
+  </p>
+</form>
 
   <!-- This section shows the expanded view -->
   <label class="flyer-expanded-view" for="expand-All Services Leave Behind - Espanol">
