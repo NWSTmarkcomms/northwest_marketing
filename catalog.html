@@ -3813,6 +3813,66 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script>
+async function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const formData = new FormData(form);
+
+  if (formData.get("companyWebsite")) return;
+
+  const payload = {
+    requesterName: (formData.get("requesterName") || "").toString().trim(),
+    requesterEmail: (formData.get("requesterEmail") || "").toString().trim(),
+    managerEmail: (formData.get("managerEmail") || "").toString().trim() || null,
+    quantity: (formData.get("quantity") || "").toString().trim(),
+    office: (formData.get("office") || "").toString().trim(),
+    product: (formData.get("product") || "").toString().trim(),
+    requestType: (formData.get("requestType") || "").toString().trim(),
+
+    recipients: {
+      requester: (formData.get("requesterEmail") || "").toString().trim(),
+      manager: (formData.get("managerEmail") || "").toString().trim() || null,
+      marketing: (formData.get("marketingEmail") || "").toString().trim(),
+      vendor: (formData.get("vendorEmail") || "").toString().trim()
+    },
+
+    vendor: {
+      name: (formData.get("vendorName") || "").toString().trim(),
+      email: (formData.get("vendorEmail") || "").toString().trim()
+    },
+
+    submittedAt: new Date().toISOString()
+  };
+
+  console.log("Submitting payload:", payload);
+
+  try {
+    const response = await fetch("https://nw-material-requests.marketingteam-b6f.workers.dev", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+    console.log("Worker response:", data);
+
+    if (!response.ok) {
+      throw new Error(data.error || "Submission failed");
+    }
+
+    form.reset();
+    alert("Request submitted successfully.");
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("There was a problem submitting your request.");
+  }
+}
+</script>
+
 
 </body>
 </html>
