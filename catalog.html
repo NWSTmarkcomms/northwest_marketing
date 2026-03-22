@@ -208,5 +208,58 @@ async function handleFormSubmit(event) {
 
 </script>
 
+<script>
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.querySelector('input[name="name"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const managerEmail = document.querySelector('input[name="managerEmail"]')?.value || "";
+  const quantity = document.querySelector('select[name="quantity"]').value;
+  const office = document.querySelector('select[name="office"]').value;
+  const product = "All Services Leave Behind - Espanol (4x9)";
+
+  try {
+    const res = await fetch("https://nw-material-requests.marketingteam-b6f.workers.dev", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        requesterName: name,
+        requesterEmail: email,
+        managerEmail: managerEmail,
+
+        product: product,
+        quantity: quantity,
+        office: office,
+
+        recipients: {
+          requester: email,
+          marketing: "marketingcommunications@callnorthwest.com",
+          vendor: "vendor@email.com"
+        },
+
+        vendor: {
+          name: "Print Vendor",
+          email: "vendor@email.com"
+        }
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Request sent successfully");
+    } else {
+      alert(data.error || "Something went wrong");
+    }
+
+  } catch (err) {
+    alert("Network error");
+  }
+});
+</script>
+
 </body>
 </html>
