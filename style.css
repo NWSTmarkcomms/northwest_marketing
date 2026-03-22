@@ -1,5 +1,88 @@
 /* =========================
-   UPDATED HEADER LAYOUT
+   NORTHWEST MARKETING MATERIAL PORTAL
+   Full CSS
+   ========================= */
+
+:root {
+  --nw-green: #85c446;
+  --nw-green-dark: #6ba136;
+  --nw-green-soft: #f2f9e8;
+  --bg: #f4f4f4;
+  --surface: #ffffff;
+  --text: #222222;
+  --muted: rgba(0, 0, 0, 0.65);
+  --border: #e8e6dd;
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --shadow: 0 4px 14px rgba(52, 33, 33, 0.05);
+  --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 8px 20px rgba(0, 0, 0, 0.5);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --max: 1200px;
+  --font: "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================
+   RESET
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   HEADER
    ========================= */
 
 .site-header {
@@ -131,7 +214,299 @@
 }
 
 /* =========================
-   UPDATED FOOTER LOGO AREA
+   HERO
+   ========================= */
+
+.hero-banner {
+  background: linear-gradient(135deg, var(--nw-green-dark), var(--nw-green));
+  color: white;
+  padding: 2.25rem 1.5rem 2rem;
+  text-align: center;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  margin: 0.9rem auto 0;
+  max-width: 760px;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* =========================
+   FEATURE SECTION
+   ========================= */
+
+.feature-section {
+  background: #f5f5f5;
+  padding: 1rem 20px 0;
+}
+
+.feature-content {
+  max-width: var(--max);
+  margin: 0 auto;
+  border: 2px solid var(--nw-green);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.feature-text-card {
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.feature-text-card h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.15;
+}
+
+.feature-title-link {
+  color: inherit;
+}
+
+.feature-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 1rem;
+}
+
+.feature-details p {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--nw-green-soft);
+  color: #1f1f1f;
+  line-height: 1.45;
+}
+
+/* =========================
+   MAIN PAGE WRAPPERS
+   ========================= */
+
+main {
+  padding: 1.5rem 0 3rem;
+}
+
+.page-content-wrapper,
+.page-shell {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   PRODUCT GRID
+   ========================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem 1.15rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+body.modal-open .product-card:hover {
+  transform: none;
+}
+
+.product-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  color: var(--nw-green-dark);
+  margin: 0 0 1rem 0;
+  line-height: 1.25;
+}
+
+.row-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.flyer-expand-toggle {
+  width: 100%;
+}
+
+.flyer-thumb-container {
+  display: block;
+  cursor: pointer;
+}
+
+.flyer-thumb {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+/* =========================
+   FORM / DETAILS
+   ========================= */
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-details input,
+.product-details select,
+.product-details textarea {
+  width: 100%;
+  padding: 0.78rem 0.85rem;
+  font-size: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-details input::placeholder,
+.product-details textarea::placeholder {
+  color: #555;
+  opacity: 1;
+}
+
+.product-details input:focus,
+.product-details select:focus,
+.product-details textarea:focus {
+  border-color: var(--nw-green);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(133, 196, 70, 0.15);
+}
+
+.product-details button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 130px;
+  padding: 0.82rem 1.25rem;
+  background: var(--nw-green);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-details button:hover {
+  background: var(--nw-green-dark);
+  transform: translateY(-1px);
+}
+
+.successMessage,
+.errorMessage {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   EXPANDED FLYER MODAL
+   ========================= */
+
+.expand-checkbox:checked ~ .flyer-expanded-view {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.flyer-expanded-view {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.flyer-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+.flyer-close-button {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.flyer-close-button:hover {
+  color: #ccc;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.flyer-expanded-view img.flyer-expanded-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: var(--shadow-strong);
+  margin: auto;
+}
+
+/* =========================
+   FOOTER
    ========================= */
 
 .site-footer {
@@ -250,6 +625,16 @@
    RESPONSIVE
    ========================= */
 
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .header-top-row {
     flex-direction: column;
@@ -279,14 +664,30 @@
     gap: 10px 18px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
+  .feature-details {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-banner {
+    padding: 1.8rem 1rem 1.7rem;
+  }
+
+  .feature-text-card h2 {
+    font-size: 1.45rem;
+  }
+
   .brand-logo {
     height: 48px;
+  }
+
+  .portal-search {
+    max-width: none;
   }
 
   .footer-grid {
