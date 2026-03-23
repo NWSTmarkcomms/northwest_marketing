@@ -79,17 +79,23 @@
 </section>
 
 <main>
-  <div class="product-grid">
+<div class="product-grid">
+  <article class="product-card">
+    <h3 class="product-title">Product Name</h3>
 
-    <div class="product-card">
-      <h2 class="product-title">All Services Leave Behind - Espanol (4x9")</h2>
+    <div class="row-layout">
+      <div class="flyer-expand-toggle">
+        <label class="flyer-thumb-container">
+          <img src="images/example.jpg" alt="Product preview" class="flyer-thumb">
+        </label>
+        <div class="zoom-hint">Click Here to Zoom</div>
+      </div>
 
-      <div class="row-layout">
-        <div class="flyer-expand-toggle">
+          
           <div class="product-details">
             <form class="material-request-form" onsubmit="handleFormSubmit(event)">
 
-              <input type="text" name="requesterName" placeholder="Requester Name" required />
+              <input type="text" name="requesterName" placeholder="Manager Name" required />
               <input type="email" name="managerEmail" placeholder="Manager Email" required />
 
               <select name="quantity" required>
