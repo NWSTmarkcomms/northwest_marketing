@@ -292,21 +292,24 @@ main {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 20px;
+  align-items: start;
 }
 
 .product-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 1rem 1.1rem 1.15rem;
+  padding: 1rem 1rem 1.15rem;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-card:hover {
@@ -325,17 +328,19 @@ body.modal-open .product-card:hover {
 }
 
 .product-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--nw-green-dark);
-  margin: 0 0 1rem 0;
-  line-height: 1.25;
+  margin: 0 0 0.9rem 0;
+  line-height: 1.3;
+  min-height: 2.6em;
 }
 
+/* force stacked card layout instead of side-by-side */
 .row-layout {
   display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: stretch;
 }
 
 .flyer-expand-toggle {
@@ -344,15 +349,29 @@ body.modal-open .product-card:hover {
 
 .flyer-thumb-container {
   display: block;
+  width: 100%;
   cursor: pointer;
 }
 
 .flyer-thumb {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: #f1f1f1;
   border-radius: var(--radius-sm);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
   cursor: pointer;
+  padding: 0.4rem;
+}
+
+.zoom-hint,
+.flyer-zoom-text {
+  display: block;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
 }
 
 /* =========================
@@ -362,13 +381,14 @@ body.modal-open .product-card:hover {
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.7rem;
+  width: 100%;
 }
 
 .product-details form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
 
 .product-details input,
@@ -383,26 +403,12 @@ body.modal-open .product-card:hover {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-details input::placeholder,
-.product-details textarea::placeholder {
-  color: #555;
-  opacity: 1;
-}
-
-.product-details input:focus,
-.product-details select:focus,
-.product-details textarea:focus {
-  border-color: var(--nw-green);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(133, 196, 70, 0.15);
-}
-
 .product-details button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 130px;
+  min-width: 120px;
   padding: 0.82rem 1.25rem;
   background: var(--nw-green);
   color: white;
@@ -418,73 +424,20 @@ body.modal-open .product-card:hover {
   transform: translateY(-1px);
 }
 
-.successMessage,
-.errorMessage {
-  margin: 0.25rem 0 0;
-  font-size: 0.95rem;
-}
-
 /* =========================
-   EXPANDED FLYER MODAL
+   RESPONSIVE
    ========================= */
 
-.expand-checkbox:checked ~ .flyer-expanded-view {
-  pointer-events: all;
-  opacity: 1;
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.flyer-expanded-view {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.flyer-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  cursor: default;
-}
-
-.flyer-close-button {
-  position: absolute;
-  top: 24px;
-  right: 32px;
-  background: transparent;
-  border: none;
-  font-size: 3rem;
-  color: white;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.flyer-close-button:hover {
-  color: #ccc;
-}
-
-body.modal-open {
-  overflow: hidden;
-}
-
-.flyer-expanded-view img.flyer-expanded-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: var(--shadow-strong);
-  margin: auto;
+@media (max-width: 680px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================
