@@ -26,7 +26,12 @@
 
     <!-- CENTER -->
     <div class="header-center">
-      <input type="text" class="portal-search" placeholder="Search materials...">
+<input 
+  type="text" 
+  id="portalSearch" 
+  class="portal-search" 
+  placeholder="Search materials..."
+>
     </div>
 
     <!-- RIGHT -->
@@ -232,16 +237,16 @@ async function handleFormSubmit(event) {
   if (success) success.style.display = "none";
   if (error) error.style.display = "none";
 
-  const payload = {
-    requesterName: formData.get("requesterName"),
-    managerEmail: formData.get("managerEmail"),
-    quantity: formData.get("quantity"),
-    office: formData.get("office"),
-    product: formData.get("product"),
-    requestType: formData.get("requestType"),
-    vendorEmail: formData.get("vendorEmail"),
-    submittedAt: new Date().toISOString()
-  };
+const payload = {
+  managerName: formData.get("managerName"),
+  managerEmail: formData.get("managerEmail"),
+  quantity: formData.get("quantity"),
+  office: formData.get("office"),
+  product: formData.get("product"),
+  requestType: formData.get("requestType"),
+  vendorEmail: formData.get("vendorEmail"),
+  submittedAt: new Date().toISOString()
+};
 
   try {
     const res = await fetch("https://nw-material-requests.marketingteam-b6f.workers.dev", {
