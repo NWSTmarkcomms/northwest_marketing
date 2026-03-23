@@ -79,66 +79,61 @@
 </section>
 
 <main>
-<div class="product-grid">
-  <article class="product-card">
-    <h3 class="product-title">Product Name</h3>
+  <div class="product-grid">
+    <article class="product-card">
+      <h3 class="product-title">Product Name</h3>
 
-    <div class="row-layout">
-      <div class="flyer-expand-toggle">
-        <label class="flyer-thumb-container">
-          <img src="images/example.jpg" alt="Product preview" class="flyer-thumb">
-        </label>
-        <div class="zoom-hint">Click Here to Zoom</div>
-      </div>
+      <div class="row-layout">
+        <div class="flyer-expand-toggle">
+          <label class="flyer-thumb-container">
+            <img src="images/example.jpg" alt="Product preview" class="flyer-thumb" />
+          </label>
+          <div class="zoom-hint">Click Here to Zoom</div>
+        </div>
 
-          
-          <div class="product-details">
-            <form class="material-request-form" onsubmit="handleFormSubmit(event)">
+        <div class="product-details">
+          <form class="material-request-form" onsubmit="handleFormSubmit(event)">
+            <input type="text" name="managerName" placeholder="Manager Name" required />
+            <input type="email" name="managerEmail" placeholder="Manager Email" required />
 
-              <input type="text" name="requesterName" placeholder="Manager Name" required />
-              <input type="email" name="managerEmail" placeholder="Manager Email" required />
+            <select name="quantity" required>
+              <option value="">Select Quantity</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+            </select>
 
-              <select name="quantity" required>
-                <option value="">Select Quantity</option>
-                <option value="100">100</option>
-                <option value="250">250</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-              </select>
+            <select name="office" required>
+              <option value="">Select Service Center</option>
+              <option value="Marietta - NWST">Marietta - NWST</option>
+            </select>
 
-              <select name="office" required>
-                <option value="">Select Service Center</option>
-                <option value="Marietta - NWST">Marietta - NWST</option>
-              </select>
+            <input type="hidden" name="product" value='All Services Leave Behind - Espanol (4x9")' />
+            <input type="hidden" name="requestType" value="Marketing Material Request" />
+            <input type="hidden" name="vendorEmail" value="elijah.neal1951@gmail.com" />
 
-              <input type="hidden" name="product" value='All Services Leave Behind - Espanol (4x9")' />
-              <input type="hidden" name="requestType" value="Marketing Material Request" />
-              <input type="hidden" name="vendorEmail" value="elijah.neal1951@gmail.com" />
+            <input
+              type="text"
+              name="companyWebsite"
+              style="position:absolute; left:-9999px; opacity:0;"
+              tabindex="-1"
+              autocomplete="off"
+            />
 
-              <input
-                type="text"
-                name="companyWebsite"
-                style="position:absolute; left:-9999px; opacity:0;"
-                tabindex="-1"
-                autocomplete="off"
-              />
+            <button type="submit">Request</button>
 
-              <button type="submit">Request</button>
+            <p class="successMessage" style="display:none; color:green;">
+              Request submitted successfully.
+            </p>
 
-              <p class="successMessage" style="display:none; color:green;">
-                Request submitted successfully.
-              </p>
-
-              <p class="errorMessage" style="display:none; color:red;">
-                Something went wrong.
-              </p>
-
-            </form>
-          </div>
+            <p class="errorMessage" style="display:none; color:red;">
+              Something went wrong.
+            </p>
+          </form>
         </div>
       </div>
-    </div>
-
+    </article>
   </div>
 </main>
 
