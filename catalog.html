@@ -274,6 +274,13 @@ const payload = {
     if (error) error.style.display = "block";
   }
 }
+
+const smartsheetText = await smartsheetRes.text();
+console.log("SMARTSHEET RESPONSE:", smartsheetText);
+
+if (!smartsheetRes.ok) {
+  throw new Error(`Smartsheet error: ${smartsheetText}`);
+}
 </script>
 
 </body>
