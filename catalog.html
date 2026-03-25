@@ -225,15 +225,14 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("portalSearch");
+
   if (search) {
     search.addEventListener("input", function () {
       const q = this.value.toLowerCase().trim();
 
       document.querySelectorAll(".product-card").forEach(card => {
         const title =
-          card.querySelector(".product-title")?.textContent.toLowerCase() ||
-          card.querySelector(".retail-title")?.textContent.toLowerCase() ||
-          "";
+          card.querySelector(".product-title")?.textContent.toLowerCase() || "";
 
         card.style.display = title.includes(q) ? "" : "none";
       });
@@ -282,27 +281,56 @@ async function handleFormSubmit(event) {
   const form = event.target;
   const formData = new FormData(form);
 
-  if (formData.get("companyWebsite")) return;
+  // Honeypot spam trap
+  if (formData.get("companyWebsite")) {
+    return;
+  }
 
   const success = form.querySelector(".successMessage");
   const error = form.querySelector(".errorMessage");
+  const button = form.querySelector('button[type="submit"]');
 
   if (success) success.style.display = "none";
   if (error) error.style.display = "none";
 
   const payload = {
-    managerName: formData.get("managerName"),
-    managerEmail: formData.get("managerEmail"),
-    quantity: formData.get("quantity"),
-    office: formData.get("office"),
-    product: formData.get("product"),
-    requestType: formData.get("requestType"),
-    vendorEmail: formData.get("vendorEmail"),
-    submittedAt: new Date().toISOString()
+    managerName: (formData.get("managerName") || "").trim(),
+    managerEmail: (formData.get("managerEmail") || "").trim(),
+    quantity: (formData.get("quantity") || "").trim(),
+    office: (formData.get("office") || "").trim(),
+    product: (formData.get("product") || "").trim(),
+    requestType: (formData.get("requestType") || "Marketing Material Request").trim(),
+    vendorEmail: (formData.get("vendorEmail") || "marketingcommunications@callnorthwest.com").trim(),
+    submittedAt: new Date().toISOString(),
+    pageUrl: window.location.href,
+    userAgent: navigator.userAgent
   };
 
+  // Basic validation
+  if (
+    !payload.managerName ||
+    !payload.managerEmail ||
+    !payload.quantity ||
+    !payload.office ||
+    !payload.product
+  ) {
+    if (error) {
+      error.textContent = "Please complete all required fields.";
+      error.style.display = "block";
+    }
+    return;
+  }
+
   try {
-    const res = await fetch("REPLACE_WITH_YOUR_ROW_CREATION_ENDPOINT", {
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Submitting...";
+    }
+
+    // Replace with your Power Automate HTTP trigger URL
+    const endpoint = "PASTE_YOUR_POWER_AUTOMATE_HTTP_URL_HERE";
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -310,23 +338,39 @@ async function handleFormSubmit(event) {
       body: JSON.stringify(payload)
     });
 
+    const rawText = await response.text();
+
     let data = {};
     try {
-      data = await res.json();
+      data = rawText ? JSON.parse(rawText) : {};
     } catch {
       data = {};
     }
 
-    if (!res.ok) throw new Error(data.error || "Request failed");
+    if (!response.ok) {
+      throw new Error(data.error || `Request failed with status ${response.status}`);
+    }
 
     form.reset();
-    if (success) success.style.display = "block";
+
+    if (success) {
+      success.textContent = "Request submitted successfully.";
+      success.style.display = "block";
+    }
   } catch (err) {
-    console.error(err);
-    if (error) error.style.display = "block";
+    console.error("Smartsheet submit error:", err);
+
+    if (error) {
+      error.textContent = "Request failed. Please try again.";
+      error.style.display = "block";
+    }
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Request";
+    }
   }
 }
 </script>
-
 </body>
 </html>
