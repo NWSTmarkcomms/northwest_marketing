@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Marketing Material Portal</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon/Mouse Favicon.png" />
   <link rel="shortcut icon" href="images/favicon/Mouse Favicon.png" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -16,25 +14,21 @@
 
 <header class="site-header google-style-header">
 
-  <!-- TOP ROW -->
   <div class="header-top centered-header-layout">
 
-    <!-- LEFT -->
     <div class="header-left">
-      <img src="/images/logos/R1-5.png" alt="Northwest Logo" class="brand-logo huge-logo">
+      <img src="/images/logos/R1-5.png" alt="Northwest Logo" class="brand-logo huge-logo" />
     </div>
 
-    <!-- CENTER -->
     <div class="header-center">
-      <input 
-        type="text" 
-        id="portalSearch" 
-        class="portal-search" 
+      <input
+        type="text"
+        id="portalSearch"
+        class="portal-search"
         placeholder="Search materials..."
-      >
+      />
     </div>
 
-    <!-- RIGHT -->
     <div class="header-right header-button-row">
       <button class="header-btn">Events</button>
       <button class="header-btn">Office Forms (Uniforms, Invoices, Etc)</button>
@@ -44,7 +38,6 @@
 
   </div>
 
-  <!-- NAV BAR -->
   <nav class="nav-bar centered-nav">
     <a href="catalog.html">All Materials</a>
     <a href="door-hangers.html">Door Hangers</a>
@@ -76,9 +69,9 @@
       </h2>
 
       <div class="feature-details">
-        <p><strong>Door Hangers</strong><br>Built for clover leafing.</p>
-        <p><strong>Flyers</strong><br>High-impact messaging.</p>
-        <p><strong>Leave Behinds</strong><br>In-person connection.</p>
+        <p><strong>Door Hangers</strong><br />Built for clover leafing.</p>
+        <p><strong>Flyers</strong><br />High-impact messaging.</p>
+        <p><strong>Leave Behinds</strong><br />In-person connection.</p>
       </div>
     </div>
   </div>
@@ -86,56 +79,85 @@
 
 <main>
   <div class="product-grid">
-<article class="product-card retail-card">
-  <div class="retail-card-inner">
 
-    <!-- LEFT: IMAGE -->
-    <div class="retail-media">
-      <img src="images/leave-behind.jpg" alt="Leave Behind" />
-    </div>
+    <article class="product-card retail-card">
+      <div class="row-layout">
 
-    <!-- RIGHT: CONTENT -->
-    <div class="retail-content">
+        <!-- LEFT: IMAGE -->
+        <div class="flyer-expand-toggle">
+          <div class="flyer-thumb-container" onclick="openImageModal('images/leave-behind.jpg', 'All Services Leave Behind')">
+            <img
+              class="flyer-thumb"
+              src="images/leave-behind.jpg"
+              alt="All Services Leave Behind"
+            />
+            <span class="zoom-hint">Click Here to Zoom</span>
+          </div>
+        </div>
 
-      <h3 class="retail-title">
-        All Services Leave Behind
-      </h3>
+        <!-- RIGHT: CONTENT -->
+        <div class="product-details">
+          <div class="product-status">Available</div>
 
-      <p class="retail-subtext">
-        Approved marketing material for service visits and local outreach.
-      </p>
+          <h3 class="product-title retail-title">All Services Leave Behind</h3>
 
-      <form class="retail-form" onsubmit="handleFormSubmit(event)">
+          <p class="product-subtext retail-subtext">
+            Approved marketing material for service visits and local outreach.
+          </p>
 
-        <input type="text" name="managerName" placeholder="Manager Name" required />
-        <input type="email" name="managerEmail" placeholder="Manager Email" required />
+          <div class="product-info-box">
+            <p class="product-meta">
+              Built for in-person follow-up, local connection, and cleaner brand consistency.
+            </p>
+          </div>
 
-        <select name="quantity" required>
-          <option value="">Select Quantity</option>
-          <option value="100">100</option>
-          <option value="250">250</option>
-          <option value="500">500</option>
-          <option value="1000">1000</option>
-        </select>
+          <form class="retail-form" onsubmit="handleFormSubmit(event)">
+            <input type="text" name="managerName" placeholder="Manager Name" required />
+            <input type="email" name="managerEmail" placeholder="Manager Email" required />
 
-        <select name="office" required>
-          <option value="">Select Service Center</option>
-          <option value="Marietta - NWST">Marietta - NWST</option>
-          <option value="Dallas - NWST">Dallas - NWST</option>
-          <option value="Tucker - NWST">Tucker - NWST</option>
-        </select>
+            <select name="quantity" required>
+              <option value="">Select Quantity</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+            </select>
 
-        <input type="hidden" name="product" value="All Services Leave Behind" />
+            <select name="office" required>
+              <option value="">Select Service Center</option>
+              <option value="Marietta - NWST">Marietta - NWST</option>
+              <option value="Dallas - NWST">Dallas - NWST</option>
+              <option value="Tucker - NWST">Tucker - NWST</option>
+            </select>
 
-        <button type="submit" class="retail-btn">
-          Request
-        </button>
+            <input type="hidden" name="product" value="All Services Leave Behind" />
+            <input type="hidden" name="requestType" value="Marketing Material Request" />
+            <input type="hidden" name="vendorEmail" value="marketingcommunications@callnorthwest.com" />
 
-      </form>
+            <!-- honeypot -->
+            <input
+              type="text"
+              name="companyWebsite"
+              autocomplete="off"
+              tabindex="-1"
+              style="position:absolute; left:-9999px; opacity:0;"
+            />
 
-    </div>
-  </div>
-</article>
+            <button type="submit" class="retail-btn">Request</button>
+
+            <p class="successMessage" style="display:none; color:green;">
+              Request submitted successfully.
+            </p>
+
+            <p class="errorMessage" style="display:none; color:red;">
+              Something went wrong.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </article>
+
   </div>
 </main>
 
@@ -195,15 +217,31 @@
   </div>
 </footer>
 
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="image-modal" style="display:none;">
+  <div class="image-modal-backdrop" onclick="closeImageModal()"></div>
+  <div class="image-modal-content">
+    <button class="image-modal-close" onclick="closeImageModal()" aria-label="Close image preview">
+      ×
+    </button>
+    <img id="imageModalImg" src="" alt="" />
+  </div>
+</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("portalSearch");
   if (search) {
     search.addEventListener("input", function () {
       const q = this.value.toLowerCase().trim();
+
       document.querySelectorAll(".product-card").forEach(card => {
-        const title = card.querySelector(".product-title")?.textContent.toLowerCase() || "";
-        card.style.display = title.includes(q) ? "block" : "none";
+        const title =
+          card.querySelector(".product-title")?.textContent.toLowerCase() ||
+          card.querySelector(".retail-title")?.textContent.toLowerCase() ||
+          "";
+
+        card.style.display = title.includes(q) ? "" : "none";
       });
     });
   }
@@ -220,6 +258,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function openImageModal(src, alt) {
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("imageModalImg");
+
+  if (!modal || !img) return;
+
+  img.src = src;
+  img.alt = alt || "Preview image";
+  modal.style.display = "block";
+  document.body.classList.add("modal-open");
+}
+
+function closeImageModal() {
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("imageModalImg");
+
+  if (!modal || !img) return;
+
+  modal.style.display = "none";
+  img.src = "";
+  img.alt = "";
+  document.body.classList.remove("modal-open");
+}
+
 async function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -234,19 +296,19 @@ async function handleFormSubmit(event) {
   if (success) success.style.display = "none";
   if (error) error.style.display = "none";
 
-const payload = {
-  managerName: formData.get("managerName"),
-  managerEmail: formData.get("managerEmail"),
-  quantity: formData.get("quantity"),
-  office: formData.get("office"),
-  product: formData.get("product"),
-  requestType: formData.get("requestType"),
-  vendorEmail: formData.get("vendorEmail"),
-  submittedAt: new Date().toISOString()
-};
+  const payload = {
+    managerName: formData.get("managerName"),
+    managerEmail: formData.get("managerEmail"),
+    quantity: formData.get("quantity"),
+    office: formData.get("office"),
+    product: formData.get("product"),
+    requestType: formData.get("requestType"),
+    vendorEmail: formData.get("vendorEmail"),
+    submittedAt: new Date().toISOString()
+  };
 
   try {
-    const res = await fetch("https://nw-material-requests.marketingteam-b6f.workers.dev", {
+    const res = await fetch("REPLACE_WITH_YOUR_ROW_CREATION_ENDPOINT", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
