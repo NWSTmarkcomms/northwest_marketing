@@ -229,7 +229,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.querySelectorAll(".product-card").forEach(card => {
         const title =
-          card.querySelector(".product-title")?.textContent.toLowerCase() || "";
+          card.querySelector(".product-title")?.textContent.toLowerCase() ||
+          card.querySelector(".retail-title")?.textContent.toLowerCase() ||
+          "";
 
         card.style.display = title.includes(q) ? "" : "none";
       });
@@ -278,39 +280,39 @@ async function handleFormSubmit(event) {
   const form = event.target;
   const formData = new FormData(form);
 
-  // Honeypot spam trap
+  // Honeypot
   if (formData.get("companyWebsite")) {
     return;
   }
 
   const success = form.querySelector(".successMessage");
   const error = form.querySelector(".errorMessage");
-  const button = form.querySelector('button[type="submit"]');
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  if (success) success.style.display = "none";
-  if (error) error.style.display = "none";
+  if (success) {
+    success.style.display = "none";
+    success.textContent = "Request submitted successfully.";
+  }
+
+  if (error) {
+    error.style.display = "none";
+    error.textContent = "Something went wrong.";
+  }
 
   const payload = {
-    managerName: (formData.get("managerName") || "").trim(),
-    managerEmail: (formData.get("managerEmail") || "").trim(),
-    quantity: (formData.get("quantity") || "").trim(),
-    office: (formData.get("office") || "").trim(),
-    product: (formData.get("product") || "").trim(),
-    requestType: (formData.get("requestType") || "Marketing Material Request").trim(),
-    vendorEmail: (formData.get("vendorEmail") || "marketingcommunications@callnorthwest.com").trim(),
+    managerName: String(formData.get("managerName") || "").trim(),
+    managerEmail: String(formData.get("managerEmail") || "").trim(),
+    quantity: String(formData.get("quantity") || "").trim(),
+    office: String(formData.get("office") || "").trim(),
+    product: String(formData.get("product") || "").trim(),
     submittedAt: new Date().toISOString(),
-    pageUrl: window.location.href,
-    userAgent: navigator.userAgent
+
+    // optional fields in case you keep them in HTML
+    requestType: String(formData.get("requestType") || "Marketing Material Request").trim(),
+    vendorEmail: String(formData.get("vendorEmail") || "").trim()
   };
 
-  // Basic validation
-  if (
-    !payload.managerName ||
-    !payload.managerEmail ||
-    !payload.quantity ||
-    !payload.office ||
-    !payload.product
-  ) {
+  if (!payload.managerName || !payload.managerEmail || !payload.quantity || !payload.office || !payload.product) {
     if (error) {
       error.textContent = "Please complete all required fields.";
       error.style.display = "block";
@@ -319,13 +321,14 @@ async function handleFormSubmit(event) {
   }
 
   try {
-    if (button) {
-      button.disabled = true;
-      button.textContent = "Submitting...";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.textContent;
+      submitButton.textContent = "Submitting...";
     }
 
-    // Replace with your Power Automate HTTP trigger URL
-    const endpoint = "PASTE_YOUR_POWER_AUTOMATE_HTTP_URL_HERE";
+    // Replace this with your Power Automate Flow 1 HTTP trigger URL
+    const endpoint = "PASTE_YOUR_FLOW_1_HTTP_URL_HERE";
 
     const response = await fetch(endpoint, {
       method: "POST",
@@ -355,16 +358,16 @@ async function handleFormSubmit(event) {
       success.style.display = "block";
     }
   } catch (err) {
-    console.error("Smartsheet submit error:", err);
+    console.error("Form submission error:", err);
 
     if (error) {
       error.textContent = "Request failed. Please try again.";
       error.style.display = "block";
     }
   } finally {
-    if (button) {
-      button.disabled = false;
-      button.textContent = "Request";
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = submitButton.dataset.originalText || "Request";
     }
   }
 }
