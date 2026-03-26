@@ -99,51 +99,33 @@
         <div class="product-details">
 
           <h3 class="product-title retail-title">All Services Leave Behind</h3>
+
           <div class="product-info-box">
+            <p class="product-subtext">
+              Submit your request directly through the embedded Smartsheet form below.
+            </p>
           </div>
 
-          <form class="retail-form" onsubmit="handleFormSubmit(event)">
-            <input type="text" name="managerName" placeholder="Manager Name" required />
-            <input type="email" name="managerEmail" placeholder="Manager Email" required />
+          <div class="embedded-form-wrap">
+            <div class="embedded-form-header">
+              <p class="embedded-form-label">Request this material</p>
+              <p class="embedded-form-note">
+                Complete the form below to submit directly to Smartsheet.
+              </p>
+            </div>
 
-            <select name="quantity" required>
-              <option value="">Select Quantity</option>
-              <option value="100">100</option>
-              <option value="250">250</option>
-              <option value="500">500</option>
-              <option value="1000">1000</option>
-            </select>
+            <iframe
+              class="smartsheet-embed"
+              src="https://app.smartsheet.com/b/form/019d2c48124176e9952f969db8cadbf4"
+              title="All Services Leave Behind Request Form"
+              width="900"
+              height="600"
+              frameborder="0"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
 
-            <select name="office" required>
-              <option value="">Select Service Center</option>
-              <option value="Marietta - NWST">Marietta - NWST</option>
-              <option value="Dallas - NWST">Dallas - NWST</option>
-              <option value="Tucker - NWST">Tucker - NWST</option>
-            </select>
-
-            <input type="hidden" name="product" value="All Services Leave Behind" />
-            <input type="hidden" name="requestType" value="Marketing Material Request" />
-            <input type="hidden" name="vendorEmail" value="marketingcommunications@callnorthwest.com" />
-
-            <!-- honeypot -->
-            <input
-              type="text"
-              name="companyWebsite"
-              autocomplete="off"
-              tabindex="-1"
-              style="position:absolute; left:-9999px; opacity:0;"
-            />
-
-            <button type="submit" class="retail-btn">Request</button>
-
-            <p class="successMessage" style="display:none; color:green;">
-              Request submitted successfully.
-            </p>
-
-            <p class="errorMessage" style="display:none; color:red;">
-              Something went wrong.
-            </p>
-          </form>
         </div>
 
       </div>
@@ -272,104 +254,6 @@ function closeImageModal() {
   img.src = "";
   img.alt = "";
   document.body.classList.remove("modal-open");
-}
-
-async function handleFormSubmit(event) {
-  event.preventDefault();
-
-  const form = event.target;
-  const formData = new FormData(form);
-
-  // Honeypot
-  if (formData.get("companyWebsite")) {
-    return;
-  }
-
-  const success = form.querySelector(".successMessage");
-  const error = form.querySelector(".errorMessage");
-  const submitButton = form.querySelector('button[type="submit"]');
-
-  if (success) {
-    success.style.display = "none";
-    success.textContent = "Request submitted successfully.";
-  }
-
-  if (error) {
-    error.style.display = "none";
-    error.textContent = "Something went wrong.";
-  }
-
-  const payload = {
-    managerName: String(formData.get("managerName") || "").trim(),
-    managerEmail: String(formData.get("managerEmail") || "").trim(),
-    quantity: String(formData.get("quantity") || "").trim(),
-    office: String(formData.get("office") || "").trim(),
-    product: String(formData.get("product") || "").trim(),
-    submittedAt: new Date().toISOString(),
-
-    // optional fields in case you keep them in HTML
-    requestType: String(formData.get("requestType") || "Marketing Material Request").trim(),
-    vendorEmail: String(formData.get("vendorEmail") || "").trim()
-  };
-
-  if (!payload.managerName || !payload.managerEmail || !payload.quantity || !payload.office || !payload.product) {
-    if (error) {
-      error.textContent = "Please complete all required fields.";
-      error.style.display = "block";
-    }
-    return;
-  }
-
-  try {
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.dataset.originalText = submitButton.textContent;
-      submitButton.textContent = "Submitting...";
-    }
-
-    // Replace this with your Power Automate Flow 1 HTTP trigger URL
-    const endpoint = "PASTE_YOUR_FLOW_1_HTTP_URL_HERE";
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const rawText = await response.text();
-
-    let data = {};
-    try {
-      data = rawText ? JSON.parse(rawText) : {};
-    } catch {
-      data = {};
-    }
-
-    if (!response.ok) {
-      throw new Error(data.error || `Request failed with status ${response.status}`);
-    }
-
-    form.reset();
-
-    if (success) {
-      success.textContent = "Request submitted successfully.";
-      success.style.display = "block";
-    }
-  } catch (err) {
-    console.error("Form submission error:", err);
-
-    if (error) {
-      error.textContent = "Request failed. Please try again.";
-      error.style.display = "block";
-    }
-  } finally {
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = submitButton.dataset.originalText || "Request";
-    }
-  }
 }
 </script>
 </body>
