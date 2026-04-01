@@ -1,6 +1,6 @@
 /* =========================
    NORTHWEST MARKETING MATERIAL PORTAL
-   UPDATED FOR 3-COLUMN CARDS + CLEAN SMARTSHEET EMBED
+   CLEAN 3-COLUMN CARD + SMARTSHEET EMBED
    ========================= */
 
 :root {
@@ -290,7 +290,6 @@ main {
 
 /* =========================
    PRODUCT GRID
-   3 COLUMNS
    ========================= */
 
 .product-grid {
@@ -332,11 +331,11 @@ body.modal-open .retail-card:hover {
 
 /* =========================
    CARD INTERNAL LAYOUT
-   IMAGE LEFT / FORM RIGHT
    ========================= */
 
 .row-layout,
-.retail-card-inner {
+.retail-card-inner,
+.stack-card-layout {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr);
   gap: 1rem;
@@ -386,7 +385,8 @@ body.modal-open .retail-card:hover {
    ========================= */
 
 .product-details,
-.retail-content {
+.retail-content,
+.compact-card-details {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -401,7 +401,8 @@ body.modal-open .retail-card:hover {
 .retail-subtext,
 .embedded-form-header,
 .embedded-form-label,
-.embedded-form-note {
+.embedded-form-note,
+.product-info-box {
   display: none;
 }
 
@@ -421,13 +422,8 @@ body.modal-open .retail-card:hover {
   margin: 0;
 }
 
-.product-info-box {
-  display: none;
-}
-
 /* =========================
    EMBEDDED SMARTSHEET FORM
-   CLEAN RIGHT SIDE
    ========================= */
 
 .embedded-form-wrap {
@@ -437,11 +433,12 @@ body.modal-open .retail-card:hover {
   padding: 0;
 }
 
-.smartsheet-embed {
+.smartsheet-embed,
+.compact-embed {
   display: block;
   width: 100%;
   min-width: 0;
-  height: 500px;
+  height: 520px;
   border: 1px solid #e3e3e3;
   border-radius: 16px;
   background: #ffffff;
@@ -492,55 +489,6 @@ body.modal-open .retail-card:hover {
   outline: none;
   border-color: var(--nw-green);
   box-shadow: 0 0 0 4px rgba(133, 196, 70, 0.16);
-}
-
-.product-details select,
-.retail-form select {
-  background-image:
-    linear-gradient(45deg, transparent 50%, #333 50%),
-    linear-gradient(135deg, #333 50%, transparent 50%);
-  background-position:
-    calc(100% - 18px) calc(50% - 3px),
-    calc(100% - 11px) calc(50% - 3px);
-  background-size: 7px 7px, 7px 7px;
-  background-repeat: no-repeat;
-  padding-right: 3rem;
-}
-
-.product-details button,
-.retail-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  min-width: 190px;
-  padding: 1rem 1.7rem;
-  background: var(--nw-green);
-  color: #ffffff;
-  border: none;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 16px rgba(133, 196, 70, 0.28);
-}
-
-.product-details button:hover,
-.retail-btn:hover {
-  background: var(--nw-green-dark);
-  transform: translateY(-1px);
-}
-
-.product-details button:active,
-.retail-btn:active {
-  transform: translateY(0);
-}
-
-.successMessage,
-.errorMessage {
-  font-size: 0.92rem;
-  margin-top: 0.15rem;
 }
 
 /* =========================
@@ -730,13 +678,15 @@ body.modal-open .retail-card:hover {
   }
 
   .row-layout,
-  .retail-card-inner {
+  .retail-card-inner,
+  .stack-card-layout {
     grid-template-columns: 110px minmax(0, 1fr);
     gap: 0.9rem;
   }
 
-  .smartsheet-embed {
-    height: 540px;
+  .smartsheet-embed,
+  .compact-embed {
+    height: 560px;
   }
 }
 
@@ -786,7 +736,8 @@ body.modal-open .retail-card:hover {
   }
 
   .row-layout,
-  .retail-card-inner {
+  .retail-card-inner,
+  .stack-card-layout {
     grid-template-columns: 1fr;
   }
 
@@ -794,17 +745,14 @@ body.modal-open .retail-card:hover {
     max-height: 280px;
   }
 
-  .smartsheet-embed {
-    height: 620px;
+  .smartsheet-embed,
+  .compact-embed {
+    height: 640px;
     border-radius: 16px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-  }
-
-  .footer-brand-link {
-    align-items: center;
   }
 
   .footer-bottom {
