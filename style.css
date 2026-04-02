@@ -765,3 +765,14 @@ body.modal-open .retail-card:hover {
     padding: 14px;
   }
 }
+
+.events-help-note {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 1rem 1.25rem;
+  background: #f3faea;
+  border: 1px solid #85c446;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
