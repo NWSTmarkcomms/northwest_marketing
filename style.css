@@ -1,8 +1,3 @@
-/* =========================
-   NORTHWEST MARKETING MATERIAL PORTAL
-   CLEAN 3-COLUMN CARD + SMARTSHEET EMBED
-   ========================= */
-
 :root {
   --nw-green: #85c446;
   --nw-green-dark: #6ea634;
@@ -23,10 +18,6 @@
   --max: 1400px;
   --font: "Segoe UI", Arial, sans-serif;
 }
-
-/* =========================
-   RESET
-   ========================= */
 
 *,
 *::before,
@@ -75,10 +66,6 @@ iframe {
   font: inherit;
 }
 
-/* =========================
-   GENERIC CONTAINER
-   ========================= */
-
 .container {
   width: 100%;
   max-width: var(--max);
@@ -86,9 +73,7 @@ iframe {
   padding: 0 20px;
 }
 
-/* =========================
-   HEADER
-   ========================= */
+/* Header */
 
 .site-header.google-style-header {
   background: #ffffff;
@@ -141,17 +126,9 @@ iframe {
   box-shadow: 0 2px 10px rgba(32, 33, 36, 0.2);
 }
 
-.header-button-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
 .header-btn {
   background: var(--nw-green);
-  color: #ffffff;
+  color: #ffffff !important;
   border: none;
   border-radius: 999px;
   padding: 0.65rem 1rem;
@@ -172,19 +149,8 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.8rem 1.35rem;
+  gap: 0.8rem 1rem;
   text-align: center;
-}
-
-.nav-bar.centered-nav a {
-  text-decoration: none;
-  color: #333333;
-  font-size: 0.92rem;
-  font-weight: 500;
-}
-
-.nav-bar.centered-nav a:hover {
-  color: var(--nw-green);
 }
 
 .google-style-header .header-top {
@@ -192,15 +158,7 @@ iframe {
   align-items: center !important;
 }
 
-.google-style-header .header-left,
-.google-style-header .header-center,
-.google-style-header .header-right {
-  flex: unset !important;
-}
-
-/* =========================
-   HERO
-   ========================= */
+/* Hero */
 
 .hero-banner {
   background: linear-gradient(135deg, var(--nw-green-dark), var(--nw-green));
@@ -216,16 +174,7 @@ iframe {
   line-height: 1.05;
 }
 
-.hero-subtitle {
-  margin: 0.9rem auto 0;
-  max-width: 760px;
-  font-size: 1rem;
-  opacity: 0.95;
-}
-
-/* =========================
-   FEATURE SECTION
-   ========================= */
+/* Feature Section */
 
 .feature-section {
   background: var(--bg);
@@ -257,10 +206,14 @@ iframe {
 }
 
 .feature-details {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 1rem;
+}
+
+.feature-section.open .feature-details {
+  display: grid;
 }
 
 .feature-details p {
@@ -272,25 +225,26 @@ iframe {
   line-height: 1.45;
 }
 
-/* =========================
-   MAIN
-   ========================= */
+/* Help Note */
+
+.events-help-note {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 1rem 1.25rem;
+  background: #f3faea;
+  border: 1px solid #85c446;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Main */
 
 main {
   padding: 1.5rem 0 3rem;
 }
 
-.page-content-wrapper,
-.page-shell {
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* =========================
-   PRODUCT GRID
-   ========================= */
+/* Product Grid */
 
 .product-grid {
   display: grid;
@@ -329,25 +283,16 @@ body.modal-open .retail-card:hover {
   transform: none;
 }
 
-/* =========================
-   CARD INTERNAL LAYOUT
-   ========================= */
+/* Card Layout */
 
-.row-layout,
-.retail-card-inner,
-.stack-card-layout {
+.row-layout {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
 
-/* =========================
-   LEFT IMAGE
-   ========================= */
-
-.flyer-expand-toggle,
-.retail-media {
+.flyer-expand-toggle {
   width: 100%;
 }
 
@@ -369,41 +314,21 @@ body.modal-open .retail-card:hover {
   border: 1px solid var(--border-light);
 }
 
-.zoom-hint,
-.flyer-zoom-text {
+.zoom-hint {
   display: block;
   text-align: center;
   font-size: 0.8rem;
   color: #666666;
   margin-top: 0.55rem;
-  margin-bottom: 0;
   line-height: 1.25;
 }
 
-/* =========================
-   RIGHT CONTENT
-   ========================= */
-
-.product-details,
-.retail-content,
-.compact-card-details {
+.product-details {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
   min-width: 0;
-  max-width: none;
-}
-
-.product-status,
-.status-chip,
-.product-subtext,
-.retail-subtext,
-.embedded-form-header,
-.embedded-form-label,
-.embedded-form-note,
-.product-info-box {
-  display: none;
 }
 
 .product-title,
@@ -415,17 +340,6 @@ body.modal-open .retail-card:hover {
   font-weight: 700;
 }
 
-.product-meta,
-.product-description {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin: 0;
-}
-
-/* =========================
-   EMBEDDED SMARTSHEET FORM
-   ========================= */
-
 .embedded-form-wrap {
   display: block;
   width: 100%;
@@ -433,8 +347,7 @@ body.modal-open .retail-card:hover {
   padding: 0;
 }
 
-.smartsheet-embed,
-.compact-embed {
+.smartsheet-embed {
   display: block;
   width: 100%;
   min-width: 0;
@@ -445,55 +358,7 @@ body.modal-open .retail-card:hover {
   overflow: hidden;
 }
 
-/* =========================
-   LEGACY FORM STYLES
-   ========================= */
-
-.product-details form,
-.retail-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.product-details input,
-.product-details select,
-.product-details textarea,
-.retail-form input,
-.retail-form select,
-.retail-form textarea {
-  width: 100%;
-  padding: 1.1rem 1.15rem;
-  font-size: 1rem;
-  border: 1px solid #cfcfcf;
-  border-radius: 18px;
-  background: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  color: #222222;
-  appearance: none;
-}
-
-.product-details input::placeholder,
-.product-details textarea::placeholder,
-.retail-form input::placeholder,
-.retail-form textarea::placeholder {
-  color: rgba(0, 0, 0, 0.52);
-}
-
-.product-details input:focus,
-.product-details select:focus,
-.product-details textarea:focus,
-.retail-form input:focus,
-.retail-form select:focus,
-.retail-form textarea:focus {
-  outline: none;
-  border-color: var(--nw-green);
-  box-shadow: 0 0 0 4px rgba(133, 196, 70, 0.16);
-}
-
-/* =========================
-   IMAGE MODAL
-   ========================= */
+/* Modal */
 
 .image-modal {
   position: fixed;
@@ -538,9 +403,7 @@ body.modal-open .retail-card:hover {
   cursor: pointer;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* Footer */
 
 .site-footer {
   margin-top: 2rem;
@@ -572,7 +435,6 @@ body.modal-open .retail-card:hover {
   display: flex;
   align-items: center;
   gap: 14px;
-  text-decoration: none;
 }
 
 .footer-logo {
@@ -594,25 +456,12 @@ body.modal-open .retail-card:hover {
   line-height: 1.1;
 }
 
-.footer-brand-subtitle {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.72);
-}
-
 .footer-title {
   margin: 0 0 0.75rem;
   font-size: 0.95rem;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
-}
-
-.footer-copy,
-.footer-text {
-  margin: 0;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.6;
 }
 
 .footer-links {
@@ -654,9 +503,7 @@ body.modal-open .retail-card:hover {
   color: rgba(255, 255, 255, 0.62);
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
+/* Responsive */
 
 @media (max-width: 1200px) {
   .product-grid {
@@ -677,15 +524,12 @@ body.modal-open .retail-card:hover {
     grid-template-columns: 1fr;
   }
 
-  .row-layout,
-  .retail-card-inner,
-  .stack-card-layout {
+  .row-layout {
     grid-template-columns: 110px minmax(0, 1fr);
     gap: 0.9rem;
   }
 
-  .smartsheet-embed,
-  .compact-embed {
+  .smartsheet-embed {
     height: 560px;
   }
 }
@@ -714,10 +558,6 @@ body.modal-open .retail-card:hover {
   .nav-bar.centered-nav {
     gap: 0.55rem 1rem;
   }
-
-  .nav-bar.centered-nav a {
-    font-size: 0.87rem;
-  }
 }
 
 @media (max-width: 680px) {
@@ -735,9 +575,7 @@ body.modal-open .retail-card:hover {
     border-radius: 18px;
   }
 
-  .row-layout,
-  .retail-card-inner,
-  .stack-card-layout {
+  .row-layout {
     grid-template-columns: 1fr;
   }
 
@@ -745,8 +583,7 @@ body.modal-open .retail-card:hover {
     max-height: 280px;
   }
 
-  .smartsheet-embed,
-  .compact-embed {
+  .smartsheet-embed {
     height: 640px;
     border-radius: 16px;
   }
@@ -764,15 +601,4 @@ body.modal-open .retail-card:hover {
     margin: 8vh auto;
     padding: 14px;
   }
-}
-
-.events-help-note {
-  max-width: 1100px;
-  margin: 1rem auto;
-  padding: 1rem 1.25rem;
-  background: #f3faea;
-  border: 1px solid #85c446;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  line-height: 1.5;
 }
