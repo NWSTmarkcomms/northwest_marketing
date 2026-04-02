@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Marketing Material Portal FAQ</title>
 
-  <link rel="icon" type="image/png" href="images/favicon/Mouse Favicon.png" />
-  <link rel="shortcut icon" href="images/favicon/Mouse Favicon.png" />
-
-  <!-- MAIN SHARED CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../images/favicon/Mouse Favicon.png" />
+  <link rel="shortcut icon" href="../images/favicon/Mouse Favicon.png" />
+  <link rel="stylesheet" href="../style.css" />
 
   <style>
-    /* ONLY FAQ-SPECIFIC STYLING (keeps catalog system intact) */
-
     .faq-shell {
       max-width: var(--max);
       margin: 0 auto;
@@ -35,6 +31,8 @@
     .faq-intro h2 {
       margin: 0 0 0.5rem;
       font-size: 1.75rem;
+      line-height: 1.1;
+      color: var(--text);
     }
 
     .faq-intro p {
@@ -56,6 +54,7 @@
       width: 100%;
       border: none;
       background: transparent;
+      color: var(--text);
       font: inherit;
       text-align: left;
       padding: 1.15rem 1.25rem;
@@ -63,6 +62,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
       cursor: pointer;
     }
 
@@ -79,8 +79,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 1.2rem;
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
 
     .faq-answer {
@@ -88,6 +90,19 @@
       padding: 0 1.25rem 1.25rem;
       color: var(--muted);
       line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+    }
+
+    .faq-answer p + p {
+      margin-top: 0.85rem;
+    }
+
+    .faq-answer a {
+      text-decoration: underline;
     }
 
     .faq-item.active .faq-answer {
@@ -100,22 +115,38 @@
 
     .faq-note {
       margin-top: 1.5rem;
-      padding: 1rem;
+      padding: 1rem 1.1rem;
       border-radius: var(--radius-lg);
       background: var(--nw-green-soft);
-      border: 1px solid rgba(133,196,70,0.25);
+      border: 1px solid rgba(133, 196, 70, 0.25);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 680px) {
+      .faq-card {
+        border-radius: 18px;
+      }
+
+      .faq-question {
+        padding: 1rem;
+        font-size: 0.96rem;
+      }
+
+      .faq-answer {
+        padding: 0 1rem 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER (MATCHES CATALOG) -->
 <header class="site-header google-style-header">
   <div class="header-top centered-header-layout">
 
     <div class="header-left">
-      <img src="/images/logos/R1-5.png" alt="Northwest Logo" class="brand-logo huge-logo" />
+      <img src="../images/logos/R1-5.png" alt="Northwest Logo" class="brand-logo huge-logo" />
     </div>
 
     <div class="header-center">
@@ -128,17 +159,16 @@
     </div>
 
     <nav class="nav-bar centered-nav">
-      <a href="catalog.html" class="header-btn">Home - Catalog</a>
-      <a href="events-nw.html" class="header-btn">Events</a>
+      <a href="../catalog.html" class="header-btn">Home - Catalog</a>
+      <a href="../events-nw.html" class="header-btn">Events</a>
       <a href="https://nwst-operations.netlify.app/" class="header-btn">Office Forms</a>
       <a href="https://marketing-fob.netlify.app/service-standards" class="header-btn">Service Standards</a>
-      <a href="faq.html" class="header-btn">FAQ</a>
+      <a href="./index.html" class="header-btn">FAQ</a>
     </nav>
 
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero-banner">
   <h1 class="hero-title">Marketing Material Portal FAQ</h1>
   <p class="hero-subtitle">
@@ -146,126 +176,160 @@
   </p>
 </section>
 
-<!-- MAIN -->
 <main>
   <div class="faq-shell">
 
-    <!-- INTRO -->
     <div class="faq-card faq-intro">
       <h2>Welcome to the Marketing Material Portal</h2>
       <p>
-        This portal is built to make ordering marketing materials simple, fast,
-        and aligned with the Northwest brand.
+        These branded portals were designed to make ordering marketing materials easier and faster for your team.
+        Each manager is encouraged to place orders using the form found under each item.
       </p>
     </div>
 
-    <!-- FAQ LIST -->
     <div class="faq-list">
 
       <div class="faq-card faq-item active searchable">
-        <button class="faq-question">
-          How do I order?
+        <button class="faq-question" type="button" aria-expanded="true">
+          <span>How do I order?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Orders are placed directly through the form under each material in the catalog.
-          Once submitted, you will receive a confirmation.
+          <p>
+            Each order is placed using the form found under your requested item.
+            After you place an order, you’ll receive a confirmation.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          How do I search for materials?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>How do I search for marketing materials?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Use the search bar at the top of the portal to quickly find materials by name.
+          <p>
+            In the top search bar, type the name of the item you’re looking for.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          Where do I order materials?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>Where can I order marketing materials for my team or customers?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          All materials are ordered through the catalog page for your brand.
+          <p>
+            All leave behinds, door hangers, review cards, flyers, and miscellaneous marketing materials
+            can be ordered using your brand’s marketing material portal.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          What counts as marketing materials?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>What are marketing materials?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Leave behinds, door hangers, flyers, review cards, service standards,
-          posters, and more.
+          <p>
+            Northwest Family of Brands marketing materials include leave behinds, door hangers, flyers,
+            coffee shop takeover cards, review cards, thank you cards, service standards, service standard posters,
+            Northwest Way posters, and more.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          How does billing work?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>How do I pay for marketing materials?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Orders are coded to your office. Invoices may arrive up to 8 weeks later through Yooz.
+          <p>
+            Marketing materials on the portal will be coded and charged to your office by Marketing and Accounts Payable.
+          </p>
+          <p>
+            Invoices for print requests may be sent to your office through Yooz up to 8 weeks after your order.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          Can I create my own materials?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>Can I make my own marketing materials?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          No. All materials must go through Marketing to ensure brand consistency and quality.
+          <p>
+            Please do not create or change marketing materials containing Northwest logos, icons, or The Mouse.
+            The Marketing team helps make sure everything reflects the trusted brand built together.
+          </p>
+          <p>
+            If you have a strong idea, send it to Marketing so it can be reviewed and developed the right way.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          Why does Marketing approve design?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>Why does design approval need to come from Marketing?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Marketing ensures messaging is clear, aligned, and effective across all markets.
+          <p>
+            Marketing is trained and equipped to receive feedback from teammates and customers.
+            That feedback, combined with team experience and brand history, helps create materials
+            that are clear, concise, and aligned.
+          </p>
         </div>
       </div>
 
       <div class="faq-card faq-item searchable">
-        <button class="faq-question">
-          How do I submit ideas or requests?
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>What do I do with my marketing ideas or custom requests?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Email:
-          <a href="mailto:marketingcommunications@callnorthwest.com">
-            marketingcommunications@callnorthwest.com
-          </a>
+          <p>
+            Email your feedback, requests, and ideas to
+            <a href="mailto:marketingcommunications@callnorthwest.com">marketingcommunications@callnorthwest.com</a>
+            and the team will explore how to make it happen.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-card faq-item searchable">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span>More questions?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            For additional support, email
+            <a href="mailto:marketingcommunications@callnorthwest.com">marketingcommunications@callnorthwest.com</a>.
+          </p>
         </div>
       </div>
 
     </div>
 
-    <!-- NOTE -->
     <div class="faq-note">
-      Built for speed, clarity, and teammate success.
+      <strong>Quick note:</strong> This FAQ page now uses the same root stylesheet and shared visual system as the catalog.
     </div>
 
   </div>
 </main>
 
-<!-- FOOTER (MATCHES CATALOG) -->
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div class="footer-grid">
 
       <div class="footer-brand-block">
-        <a href="catalog.html" class="footer-brand-link">
-          <img src="images/northwest.png" class="footer-logo" />
-          <div>
+        <a href="../catalog.html" class="footer-brand-link">
+          <img src="../images/northwest.png" alt="Northwest Logo" class="footer-logo" />
+          <div class="footer-brand-text">
             <span class="footer-brand-title">Marketing Material Portal</span>
             <span class="footer-brand-subtitle">Northwest Exterminating</span>
           </div>
@@ -275,19 +339,28 @@
       <div>
         <h3 class="footer-title">Portal</h3>
         <div class="footer-links">
-          <a href="catalog.html">Materials</a>
-          <a href="events-nw.html">Events</a>
-          <a href="faq.html">FAQ</a>
-          <a href="mailto:marketingcommunications@callnorthwest.com">
+          <a href="../catalog.html">Marketing Materials</a>
+          <a href="../events-nw.html">Events</a>
+          <a href="./index.html">FAQ</a>
+          <a href="mailto:marketingcommunications@callnorthwest.com?subject=Marketing%20Request&body=Hi%20Marketing%20Team,%0D%0A%0D%0AI%20need%20help%20with:%0D%0A-%0D%0A%0D%0AOffice:%0D%0AManager:%0D%0ADue%20Date:%0D%0A">
             Contact Us
           </a>
         </div>
       </div>
 
       <div>
+        <h3 class="footer-title">Ops Support</h3>
+        <div class="footer-links">
+          <a href="https://nwst-operations.netlify.app/">Ops Support Portal</a>
+          <a href="https://app.smartsheet.com/b/form/c79abe03588f4e57ba945fe9afda2477">Mouse Apparel</a>
+          <a href="https://app.smartsheet.com/b/form/7ce55f3f15054b348da38054a92fb0be">Uniform Teamwear</a>
+        </div>
+      </div>
+
+      <div>
         <h3 class="footer-title">Support</h3>
         <div class="footer-contact-list">
-          <span>Marketing Communications</span>
+          <span>Marketing Communications Team</span>
           <a href="mailto:marketingcommunications@callnorthwest.com">
             marketingcommunications@callnorthwest.com
           </a>
@@ -298,36 +371,35 @@
 
     <div class="footer-bottom">
       <span>© 2026 Northwest Exterminating</span>
+      <span>Built for brand clarity, speed, and teammate support.</span>
     </div>
   </div>
 </footer>
 
-<!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  const search = document.getElementById("faqSearch");
+  const faqButtons = document.querySelectorAll(".faq-question");
 
-  // accordion
-  document.querySelectorAll(".faq-question").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = btn.closest(".faq-item");
+  faqButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
+      const isActive = item.classList.contains("active");
       item.classList.toggle("active");
+      button.setAttribute("aria-expanded", String(!isActive));
     });
   });
 
-  // search
-  const search = document.getElementById("faqSearch");
-
   if (search) {
     search.addEventListener("input", function () {
-      const q = this.value.toLowerCase();
+      const q = this.value.toLowerCase().trim();
 
-      document.querySelectorAll(".searchable").forEach(item => {
-        const text = item.innerText.toLowerCase();
+      document.querySelectorAll(".searchable").forEach((item) => {
+        const text = item.textContent.toLowerCase();
         item.style.display = text.includes(q) ? "" : "none";
       });
     });
   }
-
 });
 </script>
 
