@@ -3,172 +3,461 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Events | Northwest Marketing Portal</title>
+  <title>Events | Marketing Material Portal</title>
+
+  <link rel="icon" type="image/png" href="images/favicon/Mouse Favicon.png" />
+  <link rel="shortcut icon" href="images/favicon/Mouse Favicon.png" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .events-shell {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem 20px 3rem;
+    }
+
+    .events-stack {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .events-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: 1.5rem;
+    }
+
+    .events-card h2 {
+      margin: 0 0 0.65rem;
+      color: var(--text);
+      line-height: 1.1;
+      font-size: 1.6rem;
+    }
+
+    .events-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .events-jump-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .events-jump-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      background: var(--nw-green);
+      color: #ffffff;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .events-jump-btn:hover {
+      background: var(--nw-green-dark);
+      transform: translateY(-1px);
+    }
+
+    .events-highlight-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .events-highlight-main {
+      background: linear-gradient(135deg, var(--nw-green-dark), var(--nw-green));
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 1.35rem;
+    }
+
+    .events-highlight-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.92;
+      margin-bottom: 0.5rem;
+    }
+
+    .events-highlight-office {
+      margin: 0 0 0.4rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .events-highlight-count {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.96;
+    }
+
+    .events-highlight-side {
+      background: var(--nw-green-soft);
+      border: 1px solid rgba(133, 196, 70, 0.25);
+      border-radius: 20px;
+      padding: 1.25rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .events-form-wrap {
+      margin-top: 1rem;
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .events-form-embed {
+      display: block;
+      width: 100%;
+      height: 960px;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .events-form-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .events-mini-link {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--nw-green-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .events-mini-link:hover {
+      text-decoration: underline;
+    }
+
+    .events-help-note {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-lg);
+      background: var(--nw-green-soft);
+      border: 1px solid rgba(133, 196, 70, 0.25);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .events-help-note a {
+      text-decoration: underline;
+    }
+
+    .events-items-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .events-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .events-item h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .events-item p {
+      margin: 0;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1100px) {
+      .events-items-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .events-highlight-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .events-card,
+      .events-item {
+        border-radius: 18px;
+        padding: 1.1rem;
+      }
+
+      .events-items-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .events-form-embed {
+        height: 1100px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Keep if Events should be behind your portal auth -->
-  <script type="module" src="/scripts/auth.js"></script>
+<header class="site-header google-style-header">
+  <div class="header-top centered-header-layout">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo-nav-container">
-      <img src="images/northwest.png" alt="Northwest Logo" class="logo" />
+    <div class="header-left">
+      <img src="/images/logos/R1-5.png" alt="Northwest Logo" class="brand-logo huge-logo" />
+    </div>
 
-      <div class="search-wrapper">
-        <div class="search-container">
-          <input type="text" id="portalSearch" placeholder="Search: request, mouse, calendar" />
-        </div>
+    <div class="header-center">
+      <input
+        type="text"
+        id="portalSearch"
+        class="portal-search"
+        placeholder="Search service center, form, or event items..."
+      />
+    </div>
 
-        <nav class="navbar">
-          <a href="catalog.html">Catalog</a>
-          <a href="event-materials.html">Event Materials</a>
-          <a href="commercial-event.html">Commercial Event Materials</a>
-          <a href="events.html" aria-current="page" class="active">Events</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+    <nav class="nav-bar centered-nav">
+      <a href="catalog.html" class="header-btn">Home - Catalog</a>
+      <a href="events-nw.html" class="header-btn">Events</a>
+      <a href="https://nwst-operations.netlify.app/" class="header-btn">Office Forms (Uniforms, Invoices, Etc)</a>
+      <a href="https://marketing-fob.netlify.app/service-standards" class="header-btn">Service Standards</a>
+      <a href="faq/index.html" class="header-btn">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero-banner">
+  <h1 class="hero-title">Event Materials</h1>
+  <p class="hero-subtitle">
+    Celebrate event momentum and request the materials your office needs in one cohesive page.
+  </p>
+</section>
+
+<section class="feature-section">
+  <div class="feature-content">
+    <div class="feature-text-card">
+      <h2>Built for Event Visibility + Support</h2>
+      <div class="feature-details">
+        <p><strong>Top Service Center</strong><br />Highlight the office leading the way in event execution this year.</p>
+        <p><strong>Event Material Form</strong><br />Use one Smartsheet form for event material support.</p>
+        <p><strong>Event Items</strong><br />Show teammates the main approved items available for events.</p>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- HERO (Form-first) -->
-  <section class="hero-banner">
-    <h1 class="hero-title">Request Event Support + The Mouse</h1>
-    <p class="hero-subtitle">
-      Fastest way to a winning event → Submit the request form first. Marketing will send a confirmation and coordinate your materials.
-    </p>
+<main>
+  <div class="events-shell">
+    <div class="events-stack">
 
-    <div class="hero-actions">
-      <a class="pill-button" href="#request">Event & Mouse Suit Request Form</a>
-      <a class="pill-button ghost" href="#calendar-section">Event Calendar</a>
-    </div>
-  </section>
-
-  <main class="page-shell">
-
-    <!-- ===================== -->
-    <!-- CONFIG (EDIT HERE)    -->
-    <!-- ===================== -->
-    <script>
-      const EVENTS_CONFIG = {
-        // If this is a Smartsheet publish calendar page, keep it here:
-        calendarEmbedUrl: "https://publish.smartsheet.com/819aa1913c564d71b397ecdd57d9a4de",
-        // Smartsheet form link (works great in iframe):
-        requestFormUrl: "https://app.smartsheet.com/b/form/1aed977bc60640b598eb42c1f3b50354",
-        marketingEmail: "marketingcommunications@callnorthwest.com"
-      };
-    </script>
-
-    <!-- ===================== -->
-    <!-- TOP: REQUEST FORM     -->
-    <!-- ===================== -->
-    <section class="section" id="request">
-      <div class="section-header">
-        <h2>Submit Your Event Request</h2>
-        <p class="muted">
-          Reserve the Mouse and request event materials. Submit once—Marketing coordinates the rest.
+      <section class="events-card">
+        <h2>One Place for Event Materials</h2>
+        <p>
+          This page is designed to keep event support simple, visible, and aligned. Highlight the service center leading in event activity, then direct teammates straight into the event material form.
         </p>
-      </div>
 
-      <div class="embed-card">
-        <div class="embed-topbar">
-          <div class="embed-title">Event Request Form (Smartsheet)</div>
+        <div class="events-jump-row">
+          <a href="#event-leader" class="events-jump-btn">Top Service Center</a>
+          <a href="#event-material-form" class="events-jump-btn">Event Material Form</a>
+          <a href="#event-material-items" class="events-jump-btn">Event Material Items</a>
+        </div>
+      </section>
 
-          <div class="embed-controls">
-            <a class="mini-link" id="openFormTop" href="#" target="_blank" rel="noopener noreferrer">
-              Open in new tab →
-            </a>
+      <section class="events-card" id="event-leader">
+        <h2>Service Center With the Most Events of the Year</h2>
+
+        <div class="events-highlight-wrap">
+          <div class="events-highlight-main">
+            <div class="events-highlight-label">Event Leader</div>
+            <h3 class="events-highlight-office">Marietta</h3>
+            <p class="events-highlight-count">24 events this year</p>
+          </div>
+
+          <div class="events-highlight-side">
+            Update this section throughout the year to spotlight momentum, celebrate field effort, and create healthy visibility around community presence.
           </div>
         </div>
+      </section>
 
-        <!-- Taller form embed -->
-        <div class="iframe-wrap" style="height: 980px;">
+      <section class="events-card" id="event-material-form">
+        <div class="events-form-top">
+          <div>
+            <h2>Event Material Form</h2>
+            <p>
+              Submit your request here for event material support.
+            </p>
+          </div>
+
+          <a
+            class="events-mini-link"
+            href="https://app.smartsheet.com/b/form/019d4f9551767702a58f2a67a528a678"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open form in new tab →
+          </a>
+        </div>
+
+        <div class="events-form-wrap">
           <iframe
-            id="formFrame"
-            title="Event Request Form"
+            class="events-form-embed"
+            src="https://app.smartsheet.com/b/form/019d4f9551767702a58f2a67a528a678"
+            title="Event Material Form"
             loading="lazy"
             referrerpolicy="no-referrer"
           ></iframe>
         </div>
-      </div>
 
-      <p class="muted" style="margin-top: 12px;">
-        Questions? Email <a href="#" id="marketingEmailLink"></a>.
-      </p>
-    </section>
+        <div class="events-help-note">
+          Questions? Email
+          <a href="mailto:marketingcommunications@callnorthwest.com">marketingcommunications@callnorthwest.com</a>.
+        </div>
+      </section>
 
-    <!-- ===================== -->
-    <!-- CALENDAR (IFRAME)     -->
-    <!-- ===================== -->
-    <section class="section" id="calendar-section">
-      <div class="section-header">
-        <h2>Event Calendar</h2>
-        <p class="muted">View-only. Updated live from Smartsheet.</p>
-      </div>
+      <section class="events-card" id="event-material-items">
+        <h2>Event Material Items</h2>
+        <p>
+          Keep this section simple and visual so teammates understand what kinds of event support items are available before submitting the form.
+        </p>
 
-      <div class="embed-card">
-        <div class="embed-topbar">
-          <div class="embed-title">Events Calendar (Smartsheet)</div>
+        <div class="events-items-grid">
+          <article class="events-item">
+            <h3>Takeover Postcard</h3>
+            <p>Promotion-focused handout designed to support quick local event conversation.</p>
+          </article>
 
-          <div class="embed-controls">
-            <button class="feature-btn" id="toggleLarge" type="button">Large Text</button>
-            <a class="mini-link" id="openCalendar" href="#" target="_blank" rel="noopener noreferrer">
-              Open Full View →
-            </a>
+          <article class="events-item">
+            <h3>HR Recruiting Card</h3>
+            <p>Compact recruiting piece for hiring conversations and teammate outreach events.</p>
+          </article>
+
+          <article class="events-item">
+            <h3>Branded Pen</h3>
+            <p>Simple branded giveaway item for lighter-touch event engagement.</p>
+          </article>
+
+          <article class="events-item">
+            <h3>Coozies</h3>
+            <p>Event giveaway option for broader community engagement and table support.</p>
+          </article>
+
+          <article class="events-item">
+            <h3>Recruiting Event Kit</h3>
+            <p>Bundled support option for recruiting-focused event presence.</p>
+          </article>
+
+          <article class="events-item">
+            <h3>More Approved Items</h3>
+            <p>Add or remove item cards here as your event materials lineup evolves.</p>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand-block">
+        <a href="catalog.html" class="footer-brand-link">
+          <img src="images/northwest.png" alt="Northwest Logo" class="footer-logo" />
+          <div class="footer-brand-text">
+            <span class="footer-brand-title">Marketing Material Portal</span>
+            <span class="footer-brand-subtitle">Northwest Exterminating</span>
           </div>
-        </div>
+        </a>
+      </div>
 
-        <div class="iframe-wrap" id="calendarWrap" style="height: 820px;">
-          <iframe
-            id="calendarFrame"
-            title="Event Calendar"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          ></iframe>
+      <div>
+        <h3 class="footer-title">Portal</h3>
+        <div class="footer-links">
+          <a href="catalog.html">Marketing Materials</a>
+          <a href="events-nw.html">Events</a>
+          <a href="faq/index.html">FAQ</a>
+          <a href="mailto:marketingcommunications@callnorthwest.com?subject=Marketing%20Request&body=Hi%20Marketing%20Team,%0D%0A%0D%0AI%20need%20help%20with:%0D%0A-%0D%0A%0D%0AOffice:%0D%0AManager:%0D%0ADue%20Date:%0D%0A">
+            Contact Us
+          </a>
         </div>
       </div>
-    </section>
 
-  </main>
+      <div>
+        <h3 class="footer-title">Ops Support</h3>
+        <div class="footer-links">
+          <a href="https://nwst-operations.netlify.app/">Ops Support Portal</a>
+          <a href="https://app.smartsheet.com/b/form/c79abe03588f4e57ba945fe9afda2477">Mouse Apparel</a>
+          <a href="https://app.smartsheet.com/b/form/7ce55f3f15054b348da38054a92fb0be">Uniform Teamwear</a>
+        </div>
+      </div>
 
-  <script>
-    // ===== Assign Embed URLs =====
-    const calendarFrame = document.getElementById("calendarFrame");
-    const formFrame = document.getElementById("formFrame");
+      <div>
+        <h3 class="footer-title">Support</h3>
+        <div class="footer-contact-list">
+          <span>Marketing Communications Team</span>
+          <a href="mailto:marketingcommunications@callnorthwest.com">
+            marketingcommunications@callnorthwest.com
+          </a>
+        </div>
+      </div>
 
-    calendarFrame.src = EVENTS_CONFIG.calendarEmbedUrl;
-    formFrame.src = EVENTS_CONFIG.requestFormUrl;
+    </div>
 
-    document.getElementById("openCalendar").href = EVENTS_CONFIG.calendarEmbedUrl;
-    document.getElementById("openFormTop").href = EVENTS_CONFIG.requestFormUrl;
+    <div class="footer-bottom">
+      <span>© 2026 Northwest Exterminating</span>
+      <span>Built for brand clarity, speed, and teammate support.</span>
+    </div>
+  </div>
+</footer>
 
-    // ===== Marketing email =====
-    const email = EVENTS_CONFIG.marketingEmail;
-    const emailLink = document.getElementById("marketingEmailLink");
-    emailLink.textContent = email;
-    emailLink.href = `mailto:${email}`;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const search = document.getElementById("portalSearch");
 
-    // ===== Large Text toggle (increases iframe container size) =====
-    const calendarWrap = document.getElementById("calendarWrap");
-    document.getElementById("toggleLarge").addEventListener("click", () => {
-      const isLarge = calendarWrap.classList.toggle("is-large");
-      calendarWrap.style.height = isLarge ? "1100px" : "820px";
-    });
-
-    // ===== Lightweight search: Enter to jump =====
-    document.getElementById("portalSearch")?.addEventListener("keydown", (e) => {
+  if (search) {
+    search.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
-      const q = (e.target.value || "").toLowerCase();
 
-      if (q.includes("request") || q.includes("form")) {
-        document.getElementById("request").scrollIntoView({ behavior: "smooth" });
-      } else if (q.includes("calendar")) {
-        document.getElementById("calendar-section").scrollIntoView({ behavior: "smooth" });
+      const q = (e.target.value || "").toLowerCase().trim();
+
+      if (q.includes("service") || q.includes("leader") || q.includes("most events")) {
+        document.getElementById("event-leader")?.scrollIntoView({ behavior: "smooth" });
+      } else if (q.includes("form") || q.includes("request")) {
+        document.getElementById("event-material-form")?.scrollIntoView({ behavior: "smooth" });
+      } else if (q.includes("item") || q.includes("materials")) {
+        document.getElementById("event-material-items")?.scrollIntoView({ behavior: "smooth" });
       }
     });
-  </script>
+  }
+});
+</script>
 
 </body>
 </html>
